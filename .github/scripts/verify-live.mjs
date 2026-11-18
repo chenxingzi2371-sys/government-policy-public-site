@@ -1,0 +1,59 @@
+// Public-only anonymous acceptance. Deployed as .github/scripts/verify-live.mjs.
+import { chromium } from 'playwright';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {query} from '../../search.mjs';
+const base=process.env.SITE_URL;
+assert.ok(base?.startsWith('https://'),'HTTPS site URL required');
+const output='live-verification';fs.mkdirSync(output,{recursive:true});
+const response=await fetch(new URL('data/public.json',base),{credentials:'omit'});
+assert.equal(response.status,200);
+const data=await response.json();assert.equal(data.schema_version,1);
+assert.equal(new Set(data.announcements.map(n=>n.id)).size,data.announcements.length);
+const results={url:base,anonymous:true,data_http:200,data_records:data.announcements.length,configured_websites:new Set(data.sources.map(s=>s.website)).size,configured_columns:data.sources.length,viewports:[]};
+const browser=await chromium.launch();
+try{
+ for(const [width,height,name] of [[1440,1050,'desktop'],[390,844,'mobile'],[320,780,'small-mobile']]){
+  const context=await browser.newContext({viewport:{width,height},timezoneId:'Asia/Shanghai'});
+  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+  const visit=await page.goto(base);assert.equal(visit.status(),200);
+  await page.locator('#s-sites').filter({hasText:/\d/}).waitFor();
+  const checks=[];
+  for(const days of [1,3,7,30]){
+   await page.locator(`[data-days="${days}"]`).click();
+   const start=await page.locator('#start').inputValue(),end=await page.locator('#end').inputValue();
+   const actualDays=(Date.parse(end)-Date.parse(start))/86400000+1;assert.equal(actualDays,days);
+   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());assert.equal(end,today);
+   const expected=data.announcements.filter(n=>n.public_date>=start&&n.public_date<=end);
+   assert.equal(Number(await page.locator('#s-items').innerText()),expected.length);
+   assert.equal(await page.locator('.item-name').count(),expected.length);
+   const stats=query(data,{start,end}).stats;
+   for(const [id,key] of [['s-sites','checked'],['s-updated','updated'],['s-empty','empty']])assert.equal(Number(await page.locator('#'+id).innerText()),stats[key]);
+   for(const n of expected){const a=page.locator('.item-name').filter({hasText:n.title});assert.equal(await a.count(),1);assert.equal(await a.getAttribute('href'),n.url);}
+   checks.push({range:days===1?'today':`last_${days}_days`,start,end,records:expected.length,statistics:stats});
+  }
+  await page.locator('#start').fill('2026-11-17');await page.locator('#end').fill('2026-11-17');await page.locator('#apply').click();
+  const custom=data.announcements.filter(n=>n.public_date==='2026-11-17');assert.equal(Number(await page.locator('#s-items').innerText()),custom.length);
+  checks.push({range:'custom',start:'2026-11-17',end:'2026-11-17',records:custom.length});
+  // Broad initial history: inspect all published members and all original links.
+  const earliest=data.announcements.map(n=>n.public_date).sort()[0];await page.locator('#start').fill(earliest);await page.locator('#end').fill('2026-11-18');await page.locator('#apply').click();
+  for(const sector of ['industry','science','market','hr','environment','emergency']){
+   await page.locator('#sector').selectOption(sector);const expected=data.announcements.filter(n=>n.sector===sector&&n.public_date<='2026-11-18');assert.equal(Number(await page.locator('#s-items').innerText()),expected.length);
+  }
+  await page.locator('#sector').selectOption('all');
+  for(const level of ['national','jiangsu','nanjing','qixia']){await page.locator('#level').selectOption(level);assert.equal(Number(await page.locator('#s-items').innerText()),data.announcements.filter(n=>n.level===level&&n.public_date<='2026-11-18').length);}
+  await page.locator('#level').selectOption('all');
+  const all=data.announcements.filter(n=>n.public_date<='2026-11-18');
+  for(const n of all){const a=page.getByRole('link',{name:n.title,exact:true});assert.equal(await a.count(),1);assert.equal(await a.getAttribute('href'),n.url);assert.equal(await a.getAttribute('target'),'_blank');assert.ok(new URL(n.url).hostname.endsWith('.gov.cn'));}
+  for(const a of await page.locator('a.home').all()){const u=new URL(await a.getAttribute('href'));assert.ok(['http:','https:'].includes(u.protocol)&&u.hostname.endsWith('.gov.cn'));}
+  const first=all[0];await page.locator('#search').fill(first.publisher);assert.ok(Number(await page.locator('#s-items').innerText())>0);await page.locator('#search').fill('不存在的关键字验收');assert.equal(await page.locator('#s-items').innerText(),'0');await page.locator('#search').fill('');
+  await page.locator('#type').selectOption('project');assert.equal(Number(await page.locator('#s-items').innerText()),all.filter(n=>n.type==='project').length);await page.locator('#type').selectOption('policy');assert.equal(Number(await page.locator('#s-items').innerText()),all.filter(n=>n.type==='policy').length);await page.locator('#type').selectOption('all');
+  assert.ok(await page.evaluate('document.documentElement.scrollWidth <= innerWidth'));
+  const cols=await page.locator('.sources').first().evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length);assert.equal(cols,width>760?2:1);
+  await page.locator('[data-days="30"]').click();await page.screenshot({path:`${output}/${name}.png`,fullPage:true});
+  assert.deepEqual(errors,[]);results.viewports.push({name,width,columns:cols,checks,department_filters:'passed',region_filters:'passed',search:'passed',type:'passed',official_title_links_checked:all.length,official_home_links:'passed',overflow:false,js_errors:errors});
+  await context.close();
+ }
+}finally{await browser.close();}
+fs.writeFileSync(`${output}/results.json`,JSON.stringify(results,null,2)+'\n');
+console.log('LIVE_ANONYMOUS_BROWSER_VERIFIED='+JSON.stringify(results));
