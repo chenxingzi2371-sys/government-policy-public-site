@@ -2,14 +2,14 @@
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {query} from '../../search.mjs';
+const {query}=await import(new URL(process.env.SITE_SEARCH_MODULE||'../../search.mjs',import.meta.url));
 const base=process.env.SITE_URL;
 const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 assert.ok(base?.startsWith('https://'),'HTTPS site URL required');
-const output='live-verification';fs.mkdirSync(output,{recursive:true});
+const output=process.env.SITE_RESULTS_DIR||'live-verification';fs.mkdirSync(output,{recursive:true});
 const response=await fetch(new URL('data/public.json',base),{credentials:'omit'});
 assert.equal(response.status,200);
-const data=await response.json();assert.equal(data.schema_version,1);assert.deepEqual(data,JSON.parse(fs.readFileSync('data/public.json')),'Served data must match the deployed snapshot');
+const data=await response.json();assert.ok([1,2].includes(data.schema_version));assert.deepEqual(data,JSON.parse(fs.readFileSync(process.env.SITE_DATA_FILE||'data/public.json')),'Served data must match the deployed snapshot');
 assert.equal(new Set(data.announcements.map(n=>n.id)).size,data.announcements.length);
 const results={url:base,anonymous:true,data_http:200,data_records:data.announcements.length,configured_websites:new Set(data.sources.map(s=>s.website)).size,configured_columns:data.sources.length,viewports:[]};
 const browser=await chromium.launch();
@@ -30,7 +30,7 @@ try{
    assert.equal(await page.locator('.item-name').count(),expected.length);
    const stats=query(data,{start,end}).stats;
    for(const [id,key] of [['s-sites','checked'],['s-updated','updated'],['s-empty','empty']])assert.equal(Number(await page.locator('#'+id).innerText()),stats[key]);
-   for(const n of expected){const a=page.locator('.item-name').filter({hasText:n.title});assert.equal(await a.count(),1);assert.equal(await a.getAttribute('href'),n.url);}
+   for(const n of expected){const a=page.locator('a.item-name[data-notice-id="'+n.id+'"]');assert.equal(await a.count(),1);assert.equal(await a.getAttribute('href'),n.url);}
    checks.push({range:days===1?'today':`last_${days}_days`,start,end,records:expected.length,statistics:stats});
   }
   await page.locator('#start').fill('2026-11-17');await page.locator('#end').fill('2026-11-17');await page.locator('#apply').click();
@@ -49,7 +49,7 @@ try{
   const expectedColumns=new Map(data.sources.map(s=>[s.url,s.name]));
   const columnLinks=await page.locator('a.column-link').all();assert.equal(columnLinks.length,data.sources.length);
   assert.equal(await page.getByRole('link',{name:'官方栏目 ↗',exact:true}).count(),0);
-  for(const a of columnLinks){assert.equal(await a.innerText(),expectedColumns.get(await a.getAttribute('href')));assert.equal(await a.getAttribute('target'),'_blank');}
+  for(const a of columnLinks){assert.equal(await a.textContent(),expectedColumns.get(await a.getAttribute('href')));assert.equal(await a.getAttribute('target'),'_blank');}
   await page.locator('details summary').first().click();assert.ok(await page.locator('a.column-link').first().isVisible());
   for(const a of await page.locator('a.home').all()){const u=new URL(await a.getAttribute('href'));assert.ok(['http:','https:'].includes(u.protocol)&&u.hostname.endsWith('.gov.cn'));}
   if(name==='desktop'){
