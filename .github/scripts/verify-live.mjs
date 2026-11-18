@@ -46,6 +46,11 @@ try{
   await page.locator('#level').selectOption('all');
   const all=data.announcements.filter(n=>n.public_date<=today);
   for(const n of all){const anchors=await page.locator('a.item-name').filter({hasText:n.title}).all();const matches=[];for(const a of anchors){if(await a.getAttribute('href')===n.url)matches.push(a);}assert.equal(matches.length,1);assert.equal(await matches[0].innerText(),n.title);assert.equal(await matches[0].getAttribute('target'),'_blank');assert.ok(new URL(n.url).hostname.endsWith('.gov.cn'));}
+  const expectedColumns=new Map(data.sources.map(s=>[s.url,s.name]));
+  const columnLinks=await page.locator('a.column-link').all();assert.equal(columnLinks.length,data.sources.length);
+  assert.equal(await page.getByRole('link',{name:'官方栏目 ↗',exact:true}).count(),0);
+  for(const a of columnLinks){assert.equal(await a.innerText(),expectedColumns.get(await a.getAttribute('href')));assert.equal(await a.getAttribute('target'),'_blank');}
+  await page.locator('details summary').first().click();assert.ok(await page.locator('a.column-link').first().isVisible());
   for(const a of await page.locator('a.home').all()){const u=new URL(await a.getAttribute('href'));assert.ok(['http:','https:'].includes(u.protocol)&&u.hostname.endsWith('.gov.cn'));}
   if(name==='desktop'){
    const target=all[0];const popupReady=page.waitForEvent('popup');await page.locator('a.item-name').filter({hasText:target.title}).first().click();const popup=await popupReady;
@@ -59,7 +64,7 @@ try{
   assert.ok(await page.evaluate('document.documentElement.scrollWidth <= innerWidth'));
   const cols=await page.locator('.sources').first().evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length);assert.equal(cols,width>760?2:1);
   await page.locator('[data-days="30"]').click();await page.screenshot({path:`${output}/${name}.png`,fullPage:true});
-  assert.deepEqual(errors,[]);results.viewports.push({name,width,columns:cols,checks,department_filters:'passed',region_filters:'passed',search:'passed',type:'passed',official_title_links_checked:all.length,official_home_links:'passed',overflow:false,js_errors:errors});
+  assert.deepEqual(errors,[]);results.viewports.push({name,width,columns:cols,checks,department_filters:'passed',region_filters:'passed',search:'passed',type:'passed',official_title_links_checked:all.length,column_name_links:columnLinks.length,official_home_links:'passed',overflow:false,js_errors:errors});
   await context.close();
  }
 }finally{await browser.close();}
