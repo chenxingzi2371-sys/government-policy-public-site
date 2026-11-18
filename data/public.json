@@ -2291,22 +2291,7 @@
       "issue_date": "2026-09-18",
       "deadlines": [],
       "source_ids": [
-        "c7c5b7afc813970684cf"
-      ]
-    },
-    {
-      "id": "c78f26e8ab6fb475a2c39c35",
-      "title": "市政府办公厅关于印发《美丽南京建设“十五五”规划》的通知",
-      "url": "https://sthjj.nanjing.gov.cn/njshjbhj/202610/t20261019_6021303.html",
-      "publisher": "南京市生态环境局",
-      "level": "nanjing",
-      "sector": "environment",
-      "type": "policy",
-      "public_date": "2026-09-18",
-      "public_at": "2026-09-18T15:50:00+08:00",
-      "issue_date": null,
-      "deadlines": [],
-      "source_ids": [
+        "c7c5b7afc813970684cf",
         "e9a9aa3b6b02f02bc4fc"
       ]
     },
