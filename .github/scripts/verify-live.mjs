@@ -9,7 +9,7 @@ assert.ok(base?.startsWith('https://'),'HTTPS site URL required');
 const output='live-verification';fs.mkdirSync(output,{recursive:true});
 const response=await fetch(new URL('data/public.json',base),{credentials:'omit'});
 assert.equal(response.status,200);
-const data=await response.json();assert.equal(data.schema_version,1);
+const data=await response.json();assert.equal(data.schema_version,1);assert.deepEqual(data,JSON.parse(fs.readFileSync('data/public.json')),'Served data must match the deployed snapshot');
 assert.equal(new Set(data.announcements.map(n=>n.id)).size,data.announcements.length);
 const results={url:base,anonymous:true,data_http:200,data_records:data.announcements.length,configured_websites:new Set(data.sources.map(s=>s.website)).size,configured_columns:data.sources.length,viewports:[]};
 const browser=await chromium.launch();
@@ -47,6 +47,13 @@ try{
   const all=data.announcements.filter(n=>n.public_date<=today);
   for(const n of all){const anchors=await page.locator('a.item-name').filter({hasText:n.title}).all();const matches=[];for(const a of anchors){if(await a.getAttribute('href')===n.url)matches.push(a);}assert.equal(matches.length,1);assert.equal(await matches[0].innerText(),n.title);assert.equal(await matches[0].getAttribute('target'),'_blank');assert.ok(new URL(n.url).hostname.endsWith('.gov.cn'));}
   for(const a of await page.locator('a.home').all()){const u=new URL(await a.getAttribute('href'));assert.ok(['http:','https:'].includes(u.protocol)&&u.hostname.endsWith('.gov.cn'));}
+  if(name==='desktop'){
+   const target=all[0];const popupReady=page.waitForEvent('popup');await page.locator('a.item-name').filter({hasText:target.title}).first().click();const popup=await popupReady;
+   let http=null,error=null;try{const r=await popup.waitForResponse(r=>r.request().isNavigationRequest(),{timeout:15000});http=r.status();}catch(e){error='navigation_response_not_observed';}
+   results.article_click={requested_url:target.url,popup_url:popup.url(),http_status:http,observation:error};await popup.close();
+   const home=page.locator('a.home').first(),homeTarget=await home.getAttribute('href');const homeReady=page.waitForEvent('popup');await home.click();const homePage=await homeReady;
+   try{await homePage.waitForLoadState('domcontentloaded',{timeout:15000});}catch{}results.home_click={requested_url:homeTarget,popup_url:homePage.url()};await homePage.close();
+  }
   const first=all[0];await page.locator('#search').fill(first.publisher);assert.ok(Number(await page.locator('#s-items').innerText())>0);await page.locator('#search').fill('不存在的关键字验收');assert.equal(await page.locator('#s-items').innerText(),'0');await page.locator('#search').fill('');
   await page.locator('#type').selectOption('project');assert.equal(Number(await page.locator('#s-items').innerText()),all.filter(n=>n.type==='project').length);await page.locator('#type').selectOption('policy');assert.equal(Number(await page.locator('#s-items').innerText()),all.filter(n=>n.type==='policy').length);await page.locator('#type').selectOption('all');
   assert.ok(await page.evaluate('document.documentElement.scrollWidth <= innerWidth'));
