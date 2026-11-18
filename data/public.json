@@ -1,0 +1,2330 @@
+{
+  "schema_version": 1,
+  "last_success_at": "2026-11-17T18:43:59+08:00",
+  "sources": [
+    {
+      "id": "002b2af001bb606f7d29",
+      "name": "部门公开目录",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/qxqscjdglj/",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "南京市栖霞区市场监督管理局"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "market"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "005f64466c1b7ccc612c",
+      "name": "行政执法",
+      "url": "https://yjglt.jiangsu.gov.cn/col/col81392/index.html?number=AJ0806",
+      "homepage": "https://yjglt.jiangsu.gov.cn/",
+      "website": "yjglt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省应急管理厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "00a1bbfc59d705dda3c6",
+      "name": "部门文件（含行政规范性文件）",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/214/224/index_18041.html",
+      "homepage": "https://gxj.nanjing.gov.cn/",
+      "website": "gxj.nanjing.gov.cn",
+      "departments": [
+        "南京市工业和信息化局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "01d28c2ce3216be337b0",
+      "name": "行政规范性文件",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/394/396/index_18003.html?tp=GROUPCAT",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）",
+        "南京市栖霞生态环境局",
+        "栖霞区应急管理局",
+        "南京市栖霞区市场监督管理局",
+        "南京市栖霞区人力资源和社会保障局",
+        "栖霞区工业和信息化局",
+        "栖霞区科学技术局",
+        "南京市栖霞区人民政府"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general",
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "10be08b715555a480ea0",
+      "name": "公告",
+      "url": "https://www.mee.gov.cn/zcwj/bwj/gg/",
+      "homepage": "https://www.mee.gov.cn/",
+      "website": "mee.gov.cn",
+      "departments": [
+        "生态环境部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "environment"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "19ac2343d92bd8227d10",
+      "name": "省级部门政府信息公开目录（文件子栏目待核验）",
+      "url": "http://sthjt.jiangsu.gov.cn/col/col83546/index.html",
+      "homepage": "http://sthjt.jiangsu.gov.cn/",
+      "website": "sthjt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省生态环境厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "environment"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "1eb700cfccbb6a158ddc",
+      "name": "科技计划与科技金融",
+      "url": "https://www.most.gov.cn/zxgz/tjcw/index.html",
+      "homepage": "https://www.most.gov.cn/",
+      "website": "most.gov.cn",
+      "departments": [
+        "科学技术部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "2500a9035d95d316c540",
+      "name": "文件通知",
+      "url": "https://gxt.jiangsu.gov.cn/col/col6278/index.html",
+      "homepage": "https://gxt.jiangsu.gov.cn/",
+      "website": "gxt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省工业和信息化厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "325da8aad20a24f6250f",
+      "name": "通知公告",
+      "url": "https://kxjst.jiangsu.gov.cn/col/col82540/index.html",
+      "homepage": "https://kxjst.jiangsu.gov.cn/",
+      "website": "kxjst.jiangsu.gov.cn",
+      "departments": [
+        "江苏省科学技术厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "365bac12aafdce393845",
+      "name": "通知公告",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/?id=xxgk_228",
+      "homepage": "https://gxj.nanjing.gov.cn/",
+      "website": "gxj.nanjing.gov.cn",
+      "departments": [
+        "南京市工业和信息化局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "371065522317184b0e87",
+      "name": "规范性文件",
+      "url": "https://www.mem.gov.cn/fw/flfgbz/gfxwj/",
+      "homepage": "https://www.mem.gov.cn/",
+      "website": "mem.gov.cn",
+      "departments": [
+        "应急管理部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "39a449be316e4f1267e0",
+      "name": "政策解读",
+      "url": "https://www.mem.gov.cn/gk/zcjd/",
+      "homepage": "https://www.mem.gov.cn/",
+      "website": "mem.gov.cn",
+      "departments": [
+        "应急管理部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "3af81a668dc8dd96851e",
+      "name": "区政府办文件",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/223/index_18003.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）",
+        "南京市栖霞生态环境局",
+        "栖霞区应急管理局",
+        "南京市栖霞区市场监督管理局",
+        "南京市栖霞区人力资源和社会保障局",
+        "栖霞区工业和信息化局",
+        "栖霞区科学技术局",
+        "南京市栖霞区人民政府"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general",
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "47966f9bf95d9bed0669",
+      "name": "工信专栏",
+      "url": "https://gxj.nanjing.gov.cn/jxzl/",
+      "homepage": "https://gxj.nanjing.gov.cn/",
+      "website": "gxj.nanjing.gov.cn",
+      "departments": [
+        "南京市工业和信息化局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "4b7e7adef93e4948aa21",
+      "name": "部门文件",
+      "url": "https://kjj.nanjing.gov.cn/njskxjswyh/?id=xxgk_224",
+      "homepage": "https://kjj.nanjing.gov.cn/",
+      "website": "kjj.nanjing.gov.cn",
+      "departments": [
+        "南京市科学技术局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "4c73f472965e66ad7618",
+      "name": "政策解读",
+      "url": "https://scjgj.jiangsu.gov.cn/col/col78965/index.html",
+      "homepage": "https://scjgj.jiangsu.gov.cn/",
+      "website": "scjgj.jiangsu.gov.cn",
+      "departments": [
+        "江苏省市场监督管理局"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "market"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "4ddfad681d4f6cf475f9",
+      "name": "区统一政策解读",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/225/index_18003.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区工业和信息化局",
+        "栖霞区科学技术局",
+        "南京市栖霞区人民政府"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "industry",
+        "science",
+        "general"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "4eab1c9df801301d3752",
+      "name": "部门公开目录",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/qxqrlshzyhshbzj/",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "南京市栖霞区人力资源和社会保障局"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "hr"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "4f2200bcffe5ade9fc24",
+      "name": "部门文件",
+      "url": "https://safety.nanjing.gov.cn/njsaqscjdglj/214/224/index_18096.html",
+      "homepage": "https://safety.nanjing.gov.cn/",
+      "website": "safety.nanjing.gov.cn",
+      "departments": [
+        "南京市应急管理局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "4fd5bb2e992de5b9cdc4",
+      "name": "政策文件",
+      "url": "https://gxt.jiangsu.gov.cn/col/col80179/index.html",
+      "homepage": "https://gxt.jiangsu.gov.cn/",
+      "website": "gxt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省工业和信息化厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "527b61b6344010277ab6",
+      "name": "统计信息",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/388/index_17633.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general"
+      ],
+      "checks": []
+    },
+    {
+      "id": "582d9b0fc6368d380c43",
+      "name": "部门公开公告目录",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/qxqkxjsj/",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区科学技术局"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "58634829dc09ce60836a",
+      "name": "政策文件",
+      "url": "https://www.miit.gov.cn/zwgk/zcwj/index.html",
+      "homepage": "https://www.miit.gov.cn/",
+      "website": "miit.gov.cn",
+      "departments": [
+        "工业和信息化部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": []
+    },
+    {
+      "id": "58ffd8a52108b40ccd2a",
+      "name": "部门公开公告目录",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/qxqhjbhj/",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "南京市栖霞生态环境局"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "environment"
+      ],
+      "checks": []
+    },
+    {
+      "id": "5dde07729330535e4059",
+      "name": "省级部门政府信息公开目录（文件子栏目待核验）",
+      "url": "http://jshrss.jiangsu.gov.cn/col/col77523/index.html",
+      "homepage": "http://jshrss.jiangsu.gov.cn/",
+      "website": "jshrss.jiangsu.gov.cn",
+      "departments": [
+        "江苏省人力资源和社会保障厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "hr"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "614d92b4d0e1b29bb98d",
+      "name": "通知公告",
+      "url": "https://www.mem.gov.cn/gk/tzgg/",
+      "homepage": "https://www.mem.gov.cn/",
+      "website": "mem.gov.cn",
+      "departments": [
+        "应急管理部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "66c51eca8e699a9837f0",
+      "name": "部门文件",
+      "url": "https://rsj.nanjing.gov.cn/njsrlzyhshbzj/214/224/index_18070.html",
+      "homepage": "https://rsj.nanjing.gov.cn/",
+      "website": "rsj.nanjing.gov.cn",
+      "departments": [
+        "南京市人力资源和社会保障局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "hr"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "6999e96b417dd3ffb1bc",
+      "name": "省政策解读（日期独立于关联原文）",
+      "url": "https://www.jiangsu.gov.cn/col/col84725/index.html",
+      "homepage": "https://www.jiangsu.gov.cn/",
+      "website": "jiangsu.gov.cn",
+      "departments": [
+        "江苏省生态环境厅",
+        "江苏省应急管理厅",
+        "江苏省市场监督管理局",
+        "江苏省人力资源和社会保障厅",
+        "江苏省工业和信息化厅",
+        "江苏省科学技术厅",
+        "江苏省人民政府"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science",
+        "general"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "69c0e4a886ccb259de41",
+      "name": "最新政策",
+      "url": "https://www.miit.gov.cn/xwfb/zxzc/index.html",
+      "homepage": "https://www.miit.gov.cn/",
+      "website": "miit.gov.cn",
+      "departments": [
+        "工业和信息化部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": []
+    },
+    {
+      "id": "6da2af6093e05eb1022b",
+      "name": "政策解读",
+      "url": "https://yjglt.jiangsu.gov.cn/col/col81373/index.html?number=",
+      "homepage": "https://yjglt.jiangsu.gov.cn/",
+      "website": "yjglt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省应急管理厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "77233ad8b940896994cc",
+      "name": "法规政策",
+      "url": "https://www.most.gov.cn/xxgk/xinxifenlei/fdzdgknr/fgzc/",
+      "homepage": "https://www.most.gov.cn/",
+      "website": "most.gov.cn",
+      "departments": [
+        "科学技术部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "7b228631327dab70bef2",
+      "name": "业务工作",
+      "url": "https://yjglt.jiangsu.gov.cn/col/col81372/index.html?number=AJ08",
+      "homepage": "https://yjglt.jiangsu.gov.cn/",
+      "website": "yjglt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省应急管理厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "7cc5216c3c51ce9044d0",
+      "name": "公告公示",
+      "url": "https://gxt.jiangsu.gov.cn/col/col6281/index.html",
+      "homepage": "https://gxt.jiangsu.gov.cn/",
+      "website": "gxt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省工业和信息化厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "7d323329afcdf33c7583",
+      "name": "科技工作",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/387/index_17633.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general"
+      ],
+      "checks": []
+    },
+    {
+      "id": "7d8a6704ddec5fa27c93",
+      "name": "区政府文件",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/222/index_18003.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）",
+        "南京市栖霞生态环境局",
+        "栖霞区应急管理局",
+        "南京市栖霞区市场监督管理局",
+        "南京市栖霞区人力资源和社会保障局",
+        "栖霞区工业和信息化局",
+        "栖霞区科学技术局",
+        "南京市栖霞区人民政府"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general",
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "8c2022f0b22045203510",
+      "name": "通知通告",
+      "url": "https://www.most.gov.cn/tztg/",
+      "homepage": "https://www.most.gov.cn/",
+      "website": "most.gov.cn",
+      "departments": [
+        "科学技术部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "8ff2c05b59e239544836",
+      "name": "部门文件",
+      "url": "https://amr.nanjing.gov.cn/gkml/214/224/index_17431.html",
+      "homepage": "https://amr.nanjing.gov.cn/",
+      "website": "amr.nanjing.gov.cn",
+      "departments": [
+        "南京市市场监督管理局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "market"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "97b1f81d47aee3cd2dfe",
+      "name": "环境保护",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/275/index_17633.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）",
+        "南京市栖霞生态环境局",
+        "栖霞区应急管理局",
+        "南京市栖霞区市场监督管理局",
+        "南京市栖霞区人力资源和社会保障局",
+        "栖霞区工业和信息化局",
+        "栖霞区科学技术局",
+        "南京市栖霞区人民政府"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general",
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "a27b1dcd7302fa82086c",
+      "name": "通知通告",
+      "url": "https://kjj.nanjing.gov.cn/njskxjswyh/?id=xxgk_228",
+      "homepage": "https://kjj.nanjing.gov.cn/",
+      "website": "kjj.nanjing.gov.cn",
+      "departments": [
+        "南京市科学技术局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "a71b99c6302c81d86905",
+      "name": "应急管理",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/425/index_17633.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）",
+        "南京市栖霞生态环境局",
+        "栖霞区应急管理局",
+        "南京市栖霞区市场监督管理局",
+        "南京市栖霞区人力资源和社会保障局",
+        "栖霞区工业和信息化局",
+        "栖霞区科学技术局",
+        "南京市栖霞区人民政府"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general",
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "ac1146ef1c6bfe317aa8",
+      "name": "政策文件",
+      "url": "https://scjgj.jiangsu.gov.cn/col/col78964/index.html",
+      "homepage": "https://scjgj.jiangsu.gov.cn/",
+      "website": "scjgj.jiangsu.gov.cn",
+      "departments": [
+        "江苏省市场监督管理局"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "market"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "bbfcf308ca3fa76adb9d",
+      "name": "冶金工贸",
+      "url": "https://yjglt.jiangsu.gov.cn/col/col81389/index.html?number=AJ0803",
+      "homepage": "https://yjglt.jiangsu.gov.cn/",
+      "website": "yjglt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省应急管理厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "c24aa5808b1a24a6b4c9",
+      "name": "部门公开公告目录（历史目录，更新滞后）",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/qxqjjhxxhj/",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区工业和信息化局"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "c51cc322a5b59ecb7cfb",
+      "name": "履职依据",
+      "url": "https://yjglt.jiangsu.gov.cn/col/col81365/index.html?number=",
+      "homepage": "https://yjglt.jiangsu.gov.cn/",
+      "website": "yjglt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省应急管理厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "c7c5b7afc813970684cf",
+      "name": "市政策文件（原法规库保留为参考）",
+      "url": "https://www.nanjing.gov.cn/zt/fjswwsgxkj/zcwj/",
+      "homepage": "https://www.nanjing.gov.cn/",
+      "website": "nanjing.gov.cn",
+      "departments": [
+        "南京市生态环境局",
+        "南京市应急管理局",
+        "南京市市场监督管理局",
+        "南京市人力资源和社会保障局",
+        "南京市工业和信息化局",
+        "南京市科学技术局",
+        "南京市人民政府"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science",
+        "general"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "ca805c797e0238c43647",
+      "name": "政策文件公开列表",
+      "url": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/41/44/index_1771.shtml",
+      "homepage": "https://www.mem.gov.cn/",
+      "website": "mem.gov.cn",
+      "departments": [
+        "应急管理部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "cac14f12b6843e1ff73b",
+      "name": "计划规划",
+      "url": "https://www.mem.gov.cn/gk/ghjh/",
+      "homepage": "https://www.mem.gov.cn/",
+      "website": "mem.gov.cn",
+      "departments": [
+        "应急管理部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": []
+    },
+    {
+      "id": "cc047b9f03c278745f0f",
+      "name": "南京市行政规范性文件库（官方公开查询接口）",
+      "url": "https://www.nanjing.gov.cn/xxgkn/szgfxwj/index.html",
+      "homepage": "https://www.nanjing.gov.cn/",
+      "website": "nanjing.gov.cn",
+      "departments": [
+        "南京市生态环境局",
+        "南京市应急管理局",
+        "南京市市场监督管理局",
+        "南京市人力资源和社会保障局",
+        "南京市工业和信息化局",
+        "南京市科学技术局",
+        "南京市人民政府"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science",
+        "general"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "d1fa735802d0d3f1cfee",
+      "name": "部门公开公告目录",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/qxqaqscjdglj/",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区应急管理局"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "emergency"
+      ],
+      "checks": []
+    },
+    {
+      "id": "d261f736056d51d92b46",
+      "name": "江苏省政策【规范性文件】",
+      "url": "https://kxjst.jiangsu.gov.cn/col/col82571/index.html",
+      "homepage": "https://kxjst.jiangsu.gov.cn/",
+      "website": "kxjst.jiangsu.gov.cn",
+      "departments": [
+        "江苏省科学技术厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "daf69a2764daf64b7c9b",
+      "name": "政策解读",
+      "url": "https://www.mee.gov.cn/zcwj/zcjd/",
+      "homepage": "https://www.mee.gov.cn/",
+      "website": "mee.gov.cn",
+      "departments": [
+        "生态环境部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "environment"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "ddff72db3d686a883df7",
+      "name": "文件公示",
+      "url": "https://www.miit.gov.cn/zwgk/wjgs/index.html",
+      "homepage": "https://www.miit.gov.cn/",
+      "website": "miit.gov.cn",
+      "departments": [
+        "工业和信息化部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": []
+    },
+    {
+      "id": "e7bf4bfe518acb7fe177",
+      "name": "公示公告",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/228/index_17633.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）",
+        "南京市栖霞生态环境局",
+        "栖霞区应急管理局",
+        "南京市栖霞区市场监督管理局",
+        "南京市栖霞区人力资源和社会保障局",
+        "栖霞区工业和信息化局",
+        "栖霞区科学技术局",
+        "南京市栖霞区人民政府"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general",
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "e7d07ef1ab3c15e675aa",
+      "name": "部门文件",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/214/224/index_18003.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）",
+        "南京市栖霞生态环境局",
+        "栖霞区应急管理局",
+        "南京市栖霞区市场监督管理局",
+        "南京市栖霞区人力资源和社会保障局",
+        "栖霞区工业和信息化局",
+        "栖霞区科学技术局",
+        "南京市栖霞区人民政府"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general",
+        "environment",
+        "emergency",
+        "market",
+        "hr",
+        "industry",
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "e9a9aa3b6b02f02bc4fc",
+      "name": "文件及解读（跟踪官方嵌入列表）",
+      "url": "https://sthjj.nanjing.gov.cn/zwgk/wjjjd/",
+      "homepage": "https://sthjj.nanjing.gov.cn/",
+      "website": "sthjj.nanjing.gov.cn",
+      "departments": [
+        "南京市生态环境局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "environment"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "ed32f45cf8bfd66e087a",
+      "name": "部文件",
+      "url": "https://www.mee.gov.cn/zcwj/bwj/wj/",
+      "homepage": "https://www.mee.gov.cn/",
+      "website": "mee.gov.cn",
+      "departments": [
+        "生态环境部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "environment"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "efe60626e8f7976cf184",
+      "name": "政策解读",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/214/225/index_18041.html",
+      "homepage": "https://gxj.nanjing.gov.cn/",
+      "website": "gxj.nanjing.gov.cn",
+      "departments": [
+        "南京市工业和信息化局"
+      ],
+      "levels": [
+        "nanjing"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "f02bf5e2757a5c817b56",
+      "name": "办公厅文件",
+      "url": "https://www.mee.gov.cn/zcwj/bgtwj/wj/",
+      "homepage": "https://www.mee.gov.cn/",
+      "website": "mee.gov.cn",
+      "departments": [
+        "生态环境部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "environment"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "f2ada22f623f12520ad0",
+      "name": "公示公告",
+      "url": "https://www.mee.gov.cn/ywdt/gsgg/",
+      "homepage": "https://www.mee.gov.cn/",
+      "website": "mee.gov.cn",
+      "departments": [
+        "生态环境部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "environment"
+      ],
+      "checks": []
+    },
+    {
+      "id": "f2ee12c716c543b07f2c",
+      "name": "科技与财务",
+      "url": "https://www.mee.gov.cn/ywgz/kjycw/",
+      "homepage": "https://www.mee.gov.cn/",
+      "website": "mee.gov.cn",
+      "departments": [
+        "生态环境部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "environment"
+      ],
+      "checks": []
+    },
+    {
+      "id": "f3e4d1c443c40fcbfcb3",
+      "name": "企业科技政策",
+      "url": "https://www.most.gov.cn/ztzl/qykjzc/index.html",
+      "homepage": "https://www.most.gov.cn/",
+      "website": "most.gov.cn",
+      "departments": [
+        "科学技术部"
+      ],
+      "levels": [
+        "national"
+      ],
+      "sectors": [
+        "science"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "f526fd596e692fd1285e",
+      "name": "省政策文件",
+      "url": "https://www.jiangsu.gov.cn/col/col84242/index.html",
+      "homepage": "https://www.jiangsu.gov.cn/",
+      "website": "jiangsu.gov.cn",
+      "departments": [
+        "江苏省工业和信息化厅",
+        "江苏省科学技术厅",
+        "江苏省市场监督管理局",
+        "江苏省人力资源和社会保障厅",
+        "江苏省生态环境厅",
+        "江苏省应急管理厅",
+        "江苏省人民政府"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "industry",
+        "science",
+        "market",
+        "hr",
+        "environment",
+        "emergency",
+        "general"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "fb809f9eb9dd7564f0a2",
+      "name": "政府信息公开年报（职责文件补充，非申报入口）",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/xxgkzl/zfxxgkndbg/index_17632.html",
+      "homepage": "https://www.njqxq.gov.cn/",
+      "website": "njqxq.gov.cn",
+      "departments": [
+        "栖霞区政府统一公开栏目（需按发布机构分流）"
+      ],
+      "levels": [
+        "qixia"
+      ],
+      "sectors": [
+        "general"
+      ],
+      "checks": []
+    },
+    {
+      "id": "fd5ab6669628b64be2c8",
+      "name": "规范性文件",
+      "url": "https://gxt.jiangsu.gov.cn/col/col64776/index.html",
+      "homepage": "https://gxt.jiangsu.gov.cn/",
+      "website": "gxt.jiangsu.gov.cn",
+      "departments": [
+        "江苏省工业和信息化厅"
+      ],
+      "levels": [
+        "jiangsu"
+      ],
+      "sectors": [
+        "industry"
+      ],
+      "checks": [
+        {
+          "date": "2026-11-17",
+          "at": "2026-11-17T18:43:09.272826+08:00",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "announcements": [
+    {
+      "id": "c1a5842bbc113864c7260ddb",
+      "title": "省政府办公厅印发关于促进平台经济创新和规范健康发展若干措施的通知",
+      "url": "http://www.jiangsu.gov.cn/art/2026/11/17/art_46144_11861125.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-11-17",
+      "public_at": "2026-11-17T15:25:00+08:00",
+      "issue_date": "2026-11-11",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "53e3342f58740253d676f86c",
+      "title": "省政府办公厅关于印发江苏省湿地名录管理办法的通知",
+      "url": "http://www.jiangsu.gov.cn/art/2026/11/17/art_46144_11861106.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-11-17",
+      "public_at": "2026-11-17T15:16:00+08:00",
+      "issue_date": "2026-11-02",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "bb225e6d6c44e0ff6eb88abe",
+      "title": "省政府办公厅关于印发江苏省公共数据资源开发利用责任制规定（试行）的通知",
+      "url": "http://www.jiangsu.gov.cn/art/2026/11/17/art_46144_11861140.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-11-17",
+      "public_at": "2026-11-17T15:34:00+08:00",
+      "issue_date": "2026-11-12",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "f19e56fff6af3cd6a69ab038",
+      "title": "省政府办公厅关于印发数字江苏建设“十五五”规划的通知",
+      "url": "http://www.jiangsu.gov.cn/art/2026/11/17/art_46144_11861186.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-11-17",
+      "public_at": "2026-11-17T15:55:00+08:00",
+      "issue_date": "2026-10-28",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "f4cf022a59ff4a8964aa04f3",
+      "title": "《江苏省人民政府关于修改〈江苏省省级财政专项资金管理办法〉的决定》（省政府令第194号）",
+      "url": "http://www.jiangsu.gov.cn/art/2026/11/17/art_46143_11860786.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-11-17",
+      "public_at": "2026-11-17T09:38:00+08:00",
+      "issue_date": "2026-11-04",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "36c80a5fcf5eae98d9dceaa8",
+      "title": "关于印发《南京市生态环境行政处罚实施办法》的通知",
+      "url": "https://sthjj.nanjing.gov.cn/njshjbhj/202611/t20261112_6038109.html",
+      "publisher": "南京市生态环境局",
+      "level": "nanjing",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-11-12",
+      "public_at": "2026-11-12T10:20:00+08:00",
+      "issue_date": "2026-11-10",
+      "deadlines": [],
+      "source_ids": [
+        "e9a9aa3b6b02f02bc4fc"
+      ]
+    },
+    {
+      "id": "06753476cfabcbd0c100b026",
+      "title": "关于推荐“AI科学家”智能实验室工作的通知",
+      "url": "https://kjj.nanjing.gov.cn/njskxjswyh/202611/t20261111_6037093.html",
+      "publisher": "南京市科学技术局",
+      "level": "nanjing",
+      "sector": "science",
+      "type": "policy",
+      "public_date": "2026-11-07",
+      "public_at": null,
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "a27b1dcd7302fa82086c"
+      ]
+    },
+    {
+      "id": "6e146705a924459c05e14018",
+      "title": "关于做好地方生态环境标准工作的意见",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202611/t20261113_1186576.html",
+      "publisher": "生态环境部、国家市场监督管理总局",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-11-04",
+      "public_at": null,
+      "issue_date": "2026-10-30",
+      "deadlines": [],
+      "source_ids": [
+        "ed32f45cf8bfd66e087a"
+      ]
+    },
+    {
+      "id": "54a97518d3955948e9f6449f",
+      "title": "《产业基础能力提升“十五五”规划》一图读懂",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/202611/t20261117_6041628.html",
+      "publisher": "南京市工业和信息化局",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-11-03",
+      "public_at": "2026-11-03T09:35:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "efe60626e8f7976cf184"
+      ]
+    },
+    {
+      "id": "7adf3d438c0c5f5ef898d21f",
+      "title": "省政府办公厅印发关于江苏省利用外资固稳促优若干措施的通知",
+      "url": "http://www.jiangsu.gov.cn/art/2026/10/30/art_46144_11852307.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-10-30",
+      "public_at": "2026-10-30T09:36:00+08:00",
+      "issue_date": "2026-10-24",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "c5f2f3d7e330a00a4b83c2db",
+      "title": "宁栖政办字〔2026〕36号 关于南京市栖霞区突发生态环境事件应急预案的通知",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/202611/t20261103_6031568.html",
+      "publisher": "栖霞区人民政府",
+      "level": "qixia",
+      "sector": "emergency",
+      "type": "policy",
+      "public_date": "2026-10-27",
+      "public_at": "2026-10-27T16:05:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "3af81a668dc8dd96851e",
+        "4ddfad681d4f6cf475f9"
+      ]
+    },
+    {
+      "id": "611163feadf596e5b2e98943",
+      "title": "关于发布国家生态环境标准《生态质量评价标准（试行）》的公告",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202611/t20261111_1186180.html",
+      "publisher": "生态环境部",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-10-26",
+      "public_at": null,
+      "issue_date": "2026-10-24",
+      "deadlines": [],
+      "source_ids": [
+        "10be08b715555a480ea0"
+      ]
+    },
+    {
+      "id": "bb36bae9e215f0927c4e3360",
+      "title": "关于废止部分文件的通知",
+      "url": "https://sthjj.nanjing.gov.cn/njshjbhj/202610/t20261023_6024645.html",
+      "publisher": "南京市生态环境局",
+      "level": "nanjing",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-10-23",
+      "public_at": "2026-10-23T16:00:00+08:00",
+      "issue_date": "2026-10-22",
+      "deadlines": [],
+      "source_ids": [
+        "e9a9aa3b6b02f02bc4fc"
+      ]
+    },
+    {
+      "id": "b6c4725e34d85c412f545a10",
+      "title": "关于组织推荐2026年度江苏省省级制造业单项冠军企业的通知",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/202610/t20261022_6023552.html",
+      "publisher": "南京市工业和信息化局",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-10-22",
+      "public_at": "2026-10-22T10:51:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "365bac12aafdce393845"
+      ]
+    },
+    {
+      "id": "2aef31d454df48830ced4e01",
+      "title": "关于发布国家生态环境标准《非道路移动机械环保信息公开技术规范》的公告",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202611/t20261105_1185602.html",
+      "publisher": "生态环境部",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-10-22",
+      "public_at": null,
+      "issue_date": "2026-10-21",
+      "deadlines": [],
+      "source_ids": [
+        "10be08b715555a480ea0"
+      ]
+    },
+    {
+      "id": "7fab92d545ac5fc795fb2d4e",
+      "title": "市政府办公厅关于印发《南京市“十五五”国土空间和自然资源保护开发利用规划》的通知",
+      "url": "https://www.nanjing.gov.cn/zdgk/202610/t20261027_6026638.html",
+      "publisher": "南京市人民政府办公厅",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-10-21",
+      "public_at": null,
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "c7c5b7afc813970684cf"
+      ]
+    },
+    {
+      "id": "c0a182063aeb1cb8de264a17",
+      "title": "宁栖政规字〔2026〕2号 南京市栖霞区人民政府关于对部分区政府行政规范性文件保留和废止的决定",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/202610/t20261021_6022868.html",
+      "publisher": "栖霞区人民政府",
+      "level": "qixia",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-10-21",
+      "public_at": "2026-10-21T15:15:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "01d28c2ce3216be337b0"
+      ]
+    },
+    {
+      "id": "71ab177eb0abcbfb2ee1dbad",
+      "title": "关于发布国家生态环境标准《难测试化学物质水生毒性测试技术指南》的公告",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202610/t20261023_1184566.html",
+      "publisher": "生态环境部",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-10-21",
+      "public_at": null,
+      "issue_date": "2026-10-20",
+      "deadlines": [],
+      "source_ids": [
+        "10be08b715555a480ea0"
+      ]
+    },
+    {
+      "id": "86fb64ad67b323ce39af919d",
+      "title": "中华人民共和国应急管理部公告（2026年第10号）：批准4项行业标准",
+      "url": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202610/t20261021_736468.shtml",
+      "publisher": "应急管理部",
+      "level": "national",
+      "sector": "emergency",
+      "type": "policy",
+      "public_date": "2026-10-21",
+      "public_at": null,
+      "issue_date": "2026-10-09",
+      "deadlines": [],
+      "source_ids": [
+        "614d92b4d0e1b29bb98d",
+        "ca805c797e0238c43647"
+      ]
+    },
+    {
+      "id": "745e8dd577b42beaba9960c7",
+      "title": "《加快构建工业和信息化领域碳排放双控工作体系实施方案（2026—2030年）》解读",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/202610/t20261028_6026981.html",
+      "publisher": "南京市工业和信息化局",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-10-21",
+      "public_at": "2026-10-21T09:15:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "efe60626e8f7976cf184"
+      ]
+    },
+    {
+      "id": "20899596c2933162266f1c77",
+      "title": "南京市人力资源和社会保障局关于发布南京市2026年第二批政府补贴性职业技能培训职业（工种）等目录的通知",
+      "url": "https://rsj.nanjing.gov.cn/njsrlzyhshbzj/202610/t20261016_6020250.html",
+      "publisher": "南京市人力资源和社会保障局",
+      "level": "nanjing",
+      "sector": "hr",
+      "type": "policy",
+      "public_date": "2026-10-16",
+      "public_at": "2026-10-16T15:05:00+08:00",
+      "issue_date": "2026-10-09",
+      "deadlines": [],
+      "source_ids": [
+        "66c51eca8e699a9837f0"
+      ]
+    },
+    {
+      "id": "dc1fc4622ad42ea6b02872c0",
+      "title": "关于印发2027年度消耗臭氧层物质和氢氟碳化物配额总量设定与分配方案的通知",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk05/202610/t20261019_1183257.html",
+      "publisher": "生态环境部办公厅",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-10-16",
+      "public_at": null,
+      "issue_date": "2026-10-15",
+      "deadlines": [],
+      "source_ids": [
+        "f02bf5e2757a5c817b56"
+      ]
+    },
+    {
+      "id": "4782382b958fdde397f35d7d",
+      "title": "应急管理部关于印发《应急管理统计工作管理办法（试行）》的通知",
+      "url": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202610/t20261015_735724.shtml",
+      "publisher": "应急管理部",
+      "level": "national",
+      "sector": "emergency",
+      "type": "policy",
+      "public_date": "2026-10-15",
+      "public_at": null,
+      "issue_date": "2026-10-13",
+      "deadlines": [],
+      "source_ids": [
+        "614d92b4d0e1b29bb98d",
+        "ca805c797e0238c43647"
+      ]
+    },
+    {
+      "id": "3417450a73a54b9ce6305fae",
+      "title": "关于发布《射线装置分类办法》的公告",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202610/t20261016_1183155.html",
+      "publisher": "生态环境部、国家卫生健康委员会",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-10-15",
+      "public_at": null,
+      "issue_date": "2026-10-14",
+      "deadlines": [],
+      "source_ids": [
+        "10be08b715555a480ea0"
+      ]
+    },
+    {
+      "id": "8b0ab236c996437495645665",
+      "title": "关于公布南京市中小企业数字化转型城市试点“小快轻准”产品和解决方案（第二批）推荐名单的通知",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/202610/t20261013_5924937.html",
+      "publisher": "南京市工业和信息化局",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-10-14",
+      "public_at": "2026-10-14T08:00:00+08:00",
+      "issue_date": "2026-10-13",
+      "deadlines": [],
+      "source_ids": [
+        "365bac12aafdce393845"
+      ]
+    },
+    {
+      "id": "baf4dbffb9b5ae5259f04401",
+      "title": "工业和信息化部等五部门关于组织开展2026年度国家绿色算力设施推荐工作的通知",
+      "url": "https://gxj.nanjing.gov.cn/jxzl/202610/t20261013_5924587.html",
+      "publisher": "南京市工业和信息化局",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-10-13",
+      "public_at": "2026-10-13T10:03:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "47966f9bf95d9bed0669"
+      ]
+    },
+    {
+      "id": "0bfc7115e26649bf9bec31bf",
+      "title": "省政府办公厅印发关于支持青年社区建设若干措施的通知",
+      "url": "http://www.jiangsu.gov.cn/art/2026/10/10/art_46144_11840065.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-10-10",
+      "public_at": "2026-10-10T10:16:00+08:00",
+      "issue_date": "2026-09-19",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "b93a8a2694a27631ec455483",
+      "title": "市政府办公厅关于印发《南京市“十五五”防震减灾规划》的通知",
+      "url": "https://www.nanjing.gov.cn/zdgk/202610/t20261020_6021866.html",
+      "publisher": "南京市人民政府办公厅",
+      "level": "nanjing",
+      "sector": "emergency",
+      "type": "policy",
+      "public_date": "2026-10-01",
+      "public_at": null,
+      "issue_date": "2026-10-01",
+      "deadlines": [],
+      "source_ids": [
+        "c7c5b7afc813970684cf"
+      ]
+    },
+    {
+      "id": "c640c3c65e60ff481be29984",
+      "title": "省政府办公厅印发关于强化稳岗扩容提质促进高质量充分就业若干措施的通知",
+      "url": "http://www.jiangsu.gov.cn/art/2026/9/29/art_46144_11836525.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "hr",
+      "type": "policy",
+      "public_date": "2026-09-29",
+      "public_at": "2026-09-29T15:06:00+08:00",
+      "issue_date": "2026-09-23",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "230ad666664e2148a0e2c14d",
+      "title": "省政府关于进一步深化零基预算改革全面提升财政科学管理效能的实施意见",
+      "url": "http://www.jiangsu.gov.cn/art/2026/9/29/art_46143_11836499.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-29",
+      "public_at": "2026-09-29T14:37:00+08:00",
+      "issue_date": "2026-09-21",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "727d44ddb5ed1cda9dc2f11f",
+      "title": "省工业和信息化厅关于印发《江苏省省级制造业单项冠军企业认定管理办法》的通知",
+      "url": "https://gxt.jiangsu.gov.cn/art/2026/9/29/art_64776_11836559.html",
+      "publisher": "江苏省工业和信息化厅",
+      "level": "jiangsu",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-29",
+      "public_at": null,
+      "issue_date": "2026-09-29",
+      "deadlines": [],
+      "source_ids": [
+        "fd5ab6669628b64be2c8"
+      ]
+    },
+    {
+      "id": "6f3616dd53c5b9f4e50f5d57",
+      "title": "应急管理部办公厅 金融监管总局办公厅 国家矿山安监局综合司关于2026年精准开展安责险事故预防服务 助力重点高危行业领域企业提升安全生产管理水平的通知",
+      "url": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202609/t20260929_717910.shtml",
+      "publisher": "应急管理部",
+      "level": "national",
+      "sector": "emergency",
+      "type": "policy",
+      "public_date": "2026-09-29",
+      "public_at": null,
+      "issue_date": "2026-09-29",
+      "deadlines": [],
+      "source_ids": [
+        "614d92b4d0e1b29bb98d",
+        "ca805c797e0238c43647"
+      ]
+    },
+    {
+      "id": "3ff3e62654244cedc8cfb3ab",
+      "title": "关于印发《生态环境基准工作方案（2026—2030年）》的通知",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk05/202610/t20261009_1175758.html",
+      "publisher": "生态环境部办公厅",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-09-29",
+      "public_at": null,
+      "issue_date": "2026-09-28",
+      "deadlines": [],
+      "source_ids": [
+        "f02bf5e2757a5c817b56"
+      ]
+    },
+    {
+      "id": "08df310bca1fc6aea218ed1f",
+      "title": "宁栖政规字〔2026〕1号 关于加强和规范南京市栖霞区对外开放口岸限定区域管理的通告",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/202609/t20260928_5918665.html",
+      "publisher": "栖霞区人民政府",
+      "level": "qixia",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-28",
+      "public_at": "2026-09-28T16:48:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "01d28c2ce3216be337b0",
+        "4ddfad681d4f6cf475f9"
+      ]
+    },
+    {
+      "id": "f08a7be22745271c012436af",
+      "title": "关于发布国家噪声排放标准《城市轨道交通噪声排放标准（第一阶段）》的公告",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202610/t20261009_1175819.html",
+      "publisher": "生态环境部",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-09-28",
+      "public_at": null,
+      "issue_date": "2026-09-18",
+      "deadlines": [],
+      "source_ids": [
+        "10be08b715555a480ea0"
+      ]
+    },
+    {
+      "id": "2bd019e4efc8f07b06af8bf6",
+      "title": "市政府办公厅关于印发《南京市“十五五”粮食流通和物资储备发展规划》的通知",
+      "url": "https://www.nanjing.gov.cn/zdgk/202610/t20261009_5922205.html",
+      "publisher": "南京市人民政府办公厅",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-27",
+      "public_at": null,
+      "issue_date": "2026-09-27",
+      "deadlines": [],
+      "source_ids": [
+        "c7c5b7afc813970684cf"
+      ]
+    },
+    {
+      "id": "f7601ff28fc787931517662c",
+      "title": "工业和信息化部办公厅关于开展人工智能应用服务商培育专项行动的通知",
+      "url": "https://gxj.nanjing.gov.cn/jxzl/202609/t20260924_5916900.html",
+      "publisher": "南京市工业和信息化局",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-24",
+      "public_at": "2026-09-24T09:29:00+08:00",
+      "issue_date": "2026-08-27",
+      "deadlines": [],
+      "source_ids": [
+        "47966f9bf95d9bed0669"
+      ]
+    },
+    {
+      "id": "c07b1b8aad3bb93fef9f0d7b",
+      "title": "【行政规范性文件】南京市工业和信息化局关于废止部分行政规范性文件的决定",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/202609/t20260930_5920545.html",
+      "publisher": "南京市工业和信息化局",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-24",
+      "public_at": "2026-09-24T00:00:00+08:00",
+      "issue_date": "2026-09-24",
+      "deadlines": [],
+      "source_ids": [
+        "00a1bbfc59d705dda3c6"
+      ]
+    },
+    {
+      "id": "639950216b11e3e39eca55cb",
+      "title": "市政府办公厅关于印发《南京市“十五五”社会消防救援事业发展规划》的通知",
+      "url": "https://www.nanjing.gov.cn/zdgk/202610/t20261009_5922191.html",
+      "publisher": "南京市人民政府办公厅",
+      "level": "nanjing",
+      "sector": "emergency",
+      "type": "policy",
+      "public_date": "2026-09-23",
+      "public_at": null,
+      "issue_date": "2026-09-23",
+      "deadlines": [],
+      "source_ids": [
+        "c7c5b7afc813970684cf"
+      ]
+    },
+    {
+      "id": "4754d68ff78a99b216bb29e0",
+      "title": "关于组织推荐工业文化教育实践基地的通知",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/202609/t20260923_5916078.html",
+      "publisher": "南京市工业和信息化局",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-23",
+      "public_at": "2026-09-23T09:34:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "365bac12aafdce393845"
+      ]
+    },
+    {
+      "id": "8bdae6a4e0844eadf3df0d67",
+      "title": "关于组织开展2026年典型案例推荐工作的通知",
+      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/202609/t20260922_5915203.html",
+      "publisher": "南京市工业和信息化局",
+      "level": "nanjing",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-22",
+      "public_at": "2026-09-22T09:16:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "365bac12aafdce393845"
+      ]
+    },
+    {
+      "id": "d41c364c5dce65e903c0f682",
+      "title": "宁栖政字〔2026〕47号 关于印发栖霞区2026年政府投资计划的通知",
+      "url": "https://www.njqxq.gov.cn/qxqrmzf/202609/t20260921_5914805.html",
+      "publisher": "栖霞区人民政府",
+      "level": "qixia",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-21",
+      "public_at": "2026-09-21T14:33:00+08:00",
+      "issue_date": "2026-05-29",
+      "deadlines": [],
+      "source_ids": [
+        "7d8a6704ddec5fa27c93"
+      ]
+    },
+    {
+      "id": "6a9e77f35c985a473d517dae",
+      "title": "中华人民共和国应急管理部令（第23号）社会消防技术服务管理规定",
+      "url": "https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202609/t20260921_717182.shtml",
+      "publisher": "应急管理部",
+      "level": "national",
+      "sector": "emergency",
+      "type": "policy",
+      "public_date": "2026-09-21",
+      "public_at": null,
+      "issue_date": "2026-09-18",
+      "deadlines": [],
+      "source_ids": [
+        "ca805c797e0238c43647"
+      ]
+    },
+    {
+      "id": "c5f42287b90d17107d917611",
+      "title": "省政府办公厅关于印发江苏省“十五五”农业农村现代化规划的通知",
+      "url": "http://www.jiangsu.gov.cn/art/2026/9/20/art_46144_11832332.html",
+      "publisher": "江苏省人民政府办公厅",
+      "level": "jiangsu",
+      "sector": "industry",
+      "type": "policy",
+      "public_date": "2026-09-20",
+      "public_at": "2026-09-20T16:04:00+08:00",
+      "issue_date": "2026-09-03",
+      "deadlines": [],
+      "source_ids": [
+        "f526fd596e692fd1285e"
+      ]
+    },
+    {
+      "id": "fed2261fcdff7da9d2bf221b",
+      "title": "一图读懂 | 关于推进机动车排放检验机构监管改革 提升排放检验质量的意见",
+      "url": "https://www.mee.gov.cn/zcwj/zcjd/202609/t20260920_1166862.shtml",
+      "publisher": "生态环境部",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-09-20",
+      "public_at": "2026-09-20T15:05:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "daf69a2764daf64b7c9b"
+      ]
+    },
+    {
+      "id": "620412482a2bc9f29a8fbd8b",
+      "title": "市政府办公厅关于印发《美丽南京建设“十五五”规划》的通知",
+      "url": "https://www.nanjing.gov.cn/zdgk/202609/t20260928_5918768.html",
+      "publisher": "南京市人民政府办公厅",
+      "level": "nanjing",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-09-18",
+      "public_at": null,
+      "issue_date": "2026-09-18",
+      "deadlines": [],
+      "source_ids": [
+        "c7c5b7afc813970684cf"
+      ]
+    },
+    {
+      "id": "c78f26e8ab6fb475a2c39c35",
+      "title": "市政府办公厅关于印发《美丽南京建设“十五五”规划》的通知",
+      "url": "https://sthjj.nanjing.gov.cn/njshjbhj/202610/t20261019_6021303.html",
+      "publisher": "南京市生态环境局",
+      "level": "nanjing",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-09-18",
+      "public_at": "2026-09-18T15:50:00+08:00",
+      "issue_date": null,
+      "deadlines": [],
+      "source_ids": [
+        "e9a9aa3b6b02f02bc4fc"
+      ]
+    },
+    {
+      "id": "3ef3845442a3d171f37d4b7d",
+      "title": "关于推进机动车排放检验机构监管改革提升排放检验质量的意见",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202609/t20260918_1166789.html",
+      "publisher": "生态环境部、国家市场监督管理总局",
+      "level": "national",
+      "sector": "environment",
+      "type": "policy",
+      "public_date": "2026-09-18",
+      "public_at": null,
+      "issue_date": "2026-09-17",
+      "deadlines": [],
+      "source_ids": [
+        "ed32f45cf8bfd66e087a"
+      ]
+    }
+  ]
+}
