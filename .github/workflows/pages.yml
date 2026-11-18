@@ -37,4 +37,21 @@ jobs:
           grep -q '政府项目申报及涉企政策检索' /tmp/public-index.html
           curl --fail --retry 6 --retry-delay 10 --proto '=https' "${SITE_URL}data/public.json" -o /tmp/public-data.json
           node --input-type=module -e 'import fs from "node:fs";const d=JSON.parse(fs.readFileSync("/tmp/public-data.json"));if(d.schema_version!==1||!Array.isArray(d.announcements))process.exit(1);console.log("ANONYMOUS_HTTPS_OK=true; ANNOUNCEMENTS="+d.announcements.length);'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser for anonymous live acceptance
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Verify live date filters, departments, counts and links
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: node .github/scripts/verify-live.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: anonymous-live-site-verification
+          path: live-verification/
+
 
