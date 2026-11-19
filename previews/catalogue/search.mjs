@@ -5,7 +5,8 @@ export function quickRange(n,now=new Date()){const end=beijingDay(now),start=new
 export function dates(start,end){if(!/^\d{4}-\d{2}-\d{2}$/.test(start)||!/^\d{4}-\d{2}-\d{2}$/.test(end)||start>end)throw Error('请选择有效起止日期');if(new Date(start+'T12:00:00Z').toISOString().slice(0,10)!==start||new Date(end+'T12:00:00Z').toISOString().slice(0,10)!==end)throw Error('日期无效');const out=[];let d=new Date(start+'T12:00:00Z');while(d.toISOString().slice(0,10)<=end){out.push(d.toISOString().slice(0,10));d.setUTCDate(d.getUTCDate()+1);if(out.length>36600)throw Error('查询范围最多一百年');}return out;}
 export function sourceHealth(source,start,end){const days=dates(start,end),checks=source.checks.filter(c=>c.date>=start&&c.date<=end);if(checks.some(c=>c.status==='error'))return 'error';if(checks.some(c=>c.status==='pending'))return 'pending';return days.every(day=>checks.some(c=>c.date===day&&c.status==='ok'))?'ok':'uncovered';}
 export function query(data,filter){const {start,end,q='',level='all',sector='all',type='all'}=filter;dates(start,end);
- const sources=data.sources.filter(s=>(level==='all'||s.levels.includes(level))&&(sector==='all'||s.sectors.includes(sector)||s.sectors.includes('general')));
+ const matchingSourceIds=new Set([...data.announcements,...(data.undated_announcements||[])].filter(n=>(level==='all'||n.level===level)&&(sector==='all'||n.sector===sector)).flatMap(n=>n.source_ids));
+ const sources=data.sources.filter(s=>matchingSourceIds.has(s.id)||((level==='all'||s.levels.includes(level))&&(sector==='all'||s.sectors.includes(sector)||s.sectors.includes('general'))));
  const sourceIds=new Set(sources.map(s=>s.id));
  const matchesType=n=>type==='all'||n.type===type;
  const matchesSearch=n=>!q||[n.title,n.publisher,LEVELS[n.level],SECTORS[n.sector]].some(v=>String(v||'').toLowerCase().includes(q.toLowerCase()));
