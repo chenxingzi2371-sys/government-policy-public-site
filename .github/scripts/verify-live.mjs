@@ -29,7 +29,7 @@ try{
    assert.equal(Number(await page.locator('#s-items').innerText()),expected.length);
    assert.equal(await page.locator('.item-name').count(),expected.length);
    const stats=query(data,{start,end}).stats;
-   for(const [id,key] of [['s-sites','checked'],['s-updated','updated'],['s-empty','empty']])assert.equal(Number(await page.locator('#'+id).innerText()),stats[key]);
+   for(const [id,key] of [['s-sites','configured'],['s-updated','updated'],['s-empty','not_found']])assert.equal(Number(await page.locator('#'+id).innerText()),stats[key]);
    for(const n of expected){const matches=await page.locator('a.item-name').evaluateAll((es,n)=>es.filter(e=>e.textContent===n.title&&e.getAttribute('href')===n.url).length,n);assert.equal(matches,1);}
    checks.push({range:days===1?'today':`last_${days}_days`,start,end,records:expected.length,statistics:stats});
   }
@@ -51,9 +51,18 @@ try{
   const expectedColumns=new Map(data.sources.map(s=>[s.url,s.name]));
   const columnLinks=await page.locator('a.column-link').all();if(strictCatalogue){assert.equal(columnLinks.length,data.sources.length);
   assert.equal(await page.getByRole('link',{name:'官方栏目 ↗',exact:true}).count(),0);
-  for(const a of columnLinks){assert.equal(await a.textContent(),expectedColumns.get(await a.getAttribute('href')));assert.equal(await a.getAttribute('target'),'_blank');}
-  await page.locator('details summary').first().click();assert.ok(await page.locator('a.column-link').first().isVisible());
+  for(const a of columnLinks){assert.ok((await a.textContent())&&expectedColumns.has(await a.getAttribute('href')));assert.equal(await a.getAttribute('target'),'_blank');}
+  await page.locator('.column-details summary').first().click();assert.ok(await page.locator('a.column-link').first().isVisible());
   }
+  for(const area of await page.locator('.announcement-section').all()){
+   assert.notEqual(await area.getAttribute('open'),null);
+   const type=await area.getAttribute('data-type');
+   for(const id of await area.locator('.item-name').evaluateAll(es=>es.map(e=>e.dataset.noticeId)))assert.equal(data.announcements.find(n=>n.id===id).type,type);
+   await area.locator('summary').click();assert.equal(await area.getAttribute('open'),null);await area.locator('summary').click();
+  }
+  assert.equal(await page.locator('.issue-date').count(),all.filter(n=>n.issue_date).length+(data.undated_announcements||[]).filter(n=>n.issue_date).length);
+  assert.equal(Number(await page.locator('#s-sites').innerText()),Number(await page.locator('#s-updated').innerText())+Number(await page.locator('#s-empty').innerText()));
+  for(const phrase of ['待核验','覆盖不足','正文未核验','附件未核验'])assert.ok(!(await page.locator('main').innerText()).includes(phrase));
   for(const a of await page.locator('a.home').all()){const u=new URL(await a.getAttribute('href'));assert.ok(['http:','https:'].includes(u.protocol)&&u.hostname.endsWith('.gov.cn'));}
   if(name==='desktop'){
    const target=all[0];const popupReady=page.waitForEvent('popup');await page.locator('a.item-name').filter({hasText:target.title}).first().click();const popup=await popupReady;
