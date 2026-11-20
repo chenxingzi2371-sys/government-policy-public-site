@@ -1,4 +1,4 @@
-import {LEVELS,SECTORS,quickRange,query,exportCSV,announcementSections,columnLabel} from './search.mjs';
+import {LEVELS,SECTORS,quickRange,query,exportCSV,announcementSections,columnLabel,departmentGroups} from './search.mjs';
 const $=id=>document.getElementById(id);let dataset=null,lastError='',deploymentError='';const selected=new Set();let currentItems=[];
 function el(tag,cls,content){const e=document.createElement(tag);if(cls)e.className=cls;if(content!==undefined)e.textContent=content;return e;}
 function link(url,label,cls){const a=el('a',cls,label);try{const u=new URL(url);if(!['http:','https:'].includes(u.protocol)||!u.hostname.endsWith('.gov.cn')||u.username||u.password)throw Error();a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';}catch{a.removeAttribute('href');}return a;}
@@ -12,8 +12,7 @@ function render(){if(!dataset)return;const filter={start:$('start').value,end:$(
  for(const [level,label] of Object.entries(LEVELS)){
   const scoped=sources.filter(s=>s.levels.includes(level));if(!scoped.length)continue;
   const heading=el('h2','section-title',label);root.append(heading);const grid=el('div','sources');
-  const groups=new Map();for(const s of scoped){const key=s.departments.length>1?label+'政府统一公开平台':s.departments.join('、');if(!groups.has(key))groups.set(key,[]);groups.get(key).push(s);}
-  for(const [name,cols] of groups){const ids=new Set(cols.map(c=>c.id));const groupItems=items.filter(n=>!assigned.has(n.id)&&n.level===level&&n.source_ids.some(id=>ids.has(id)));const unknown=undated.filter(n=>!assignedUndated.has(n.id)&&n.level===level&&n.source_ids.some(id=>ids.has(id)));const card=el('article','source'),head=el('div','source-top');head.append(el('span','num',String(++cardIndex)),el('span','source-title',name),el('span','tag'+(groupItems.length?' up':''),`${groupItems.length}条`),link(cols[0].homepage,'官网 ↗','home'));card.append(head);const body=el('div','source-body');
+  for(const {name,cols,groupItems,unknown} of departmentGroups(scoped,items.filter(n=>n.level===level&&!assigned.has(n.id)),undated.filter(n=>n.level===level&&!assignedUndated.has(n.id)),level)){const card=el('article','source'),head=el('div','source-top');head.append(el('span','num',String(++cardIndex)),el('span','source-title',name),el('span','tag'+(groupItems.length?' up':''),`${groupItems.length}条`),link(cols[0].homepage,'官网 ↗','home'));card.append(head);const body=el('div','source-body');
    for(const section of announcementSections(groupItems,unknown)){
     const area=el('details','announcement-section');area.open=true;area.dataset.type=section.type;
     area.append(el('summary','',`${section.label}（${section.items.length}条${section.undated.length?'，另'+section.undated.length+'条日期待确认':''}）`));

@@ -49,7 +49,7 @@ try{
   assert.equal(await page.locator('.undated-name').count(),(data.undated_announcements||[]).length);
   assert.deepEqual(await page.locator('#type option').evaluateAll(es=>es.map(e=>e.value)),['all','project','policy']);
   const expectedColumns=new Map(data.sources.map(s=>[s.url,s.name]));
-  const columnLinks=await page.locator('a.column-link').all();if(strictCatalogue){assert.equal(columnLinks.length,data.sources.length);
+  const columnLinks=await page.locator('a.column-link').all();if(strictCatalogue){assert.deepEqual(new Set(await page.locator('a.column-link').evaluateAll(es=>es.map(e=>e.getAttribute('href')))),new Set(data.sources.map(s=>s.url)));
   assert.equal(await page.getByRole('link',{name:'官方栏目 ↗',exact:true}).count(),0);
   for(const a of columnLinks){assert.ok((await a.textContent())&&expectedColumns.has(await a.getAttribute('href')));assert.equal(await a.getAttribute('target'),'_blank');}
   await page.locator('.column-details summary').first().click();assert.ok(await page.locator('a.column-link').first().isVisible());

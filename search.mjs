@@ -25,3 +25,28 @@ export function exportCSV(items){const cell=value=>{let s=String(value??'');if(/
 // Public presentation only: internal check states and date precision stay intact.
 export function announcementSections(items,undated=[]){return [['project','项目申报'],['policy','涉企政策']].map(([type,label])=>({type,label,items:items.filter(n=>n.type===type),undated:undated.filter(n=>n.type===type)})).filter(s=>s.items.length||s.undated.length);}
 export function columnLabel(name){return name.replace(/（[^）]*(?:待核验|跟踪官方|历史目录|日期独立|原法规库)[^）]*）/g,'');}
+
+// Shared district host is a collection location, not an issuing department.
+export function departmentGroups(sources,items,undated,level){
+ const groups=new Map(),seen=new Set();
+ const add=(name,cols)=>{if(!groups.has(name))groups.set(name,{name,cols:[],groupItems:[],unknown:[]});const g=groups.get(name);for(const c of cols)if(!g.cols.some(s=>s.id===c.id))g.cols.push(c);return g;};
+ if(level!=='qixia'){
+  for(const s of sources)add(s.departments.length>1?(level==='jiangsu'?'江苏省人民政府':level==='nanjing'?'南京市人民政府':'国家综合政策'):s.departments.join('、'),[s]);
+  for(const g of groups.values())for(const [rows,key] of [[items,'groupItems'],[undated,'unknown']])for(const n of rows){if(!seen.has(n.id)&&n.source_ids.some(id=>g.cols.some(c=>c.id===id))){g[key].push(n);seen.add(n.id);}}
+  return [...groups.values()];
+ }
+ const normal=s=>s.replace(/^南京市/,'').replace(/人力资源和社会保障/g,'人力资源社会保障').replace(/经济和信息化/g,'工业和信息化');
+ for(const s of sources){const names=s.departments.filter(name=>!/统一公开|分流/.test(name));for(const name of names.length?names:['南京市栖霞区人民政府'])add(name,[s]);}
+ const aliases={'区工信局':'栖霞区工业和信息化局','区科技局':'栖霞区科学技术局','区应急管理局':'栖霞区应急管理局','区市场监管局':'南京市栖霞区市场监督管理局','区人社局':'南京市栖霞区人力资源和社会保障局','栖霞生态环境局':'南京市栖霞生态环境局'};
+ for(const [rows,key] of [[items,'groupItems'],[undated,'unknown']])for(const n of rows){
+  if(seen.has(n.id))continue;seen.add(n.id);
+  const related=sources.filter(s=>n.source_ids.includes(s.id));if(!related.length)continue;
+  const pub=n.publisher||'',certain=pub&&!/未明确|未知|待确认/.test(pub);
+  let name=[...groups.keys()].sort((a,b)=>b.length-a.length).find(d=>certain&&normal(pub).includes(normal(d)));
+  if(!name){const text=certain?pub:n.title;const alias=Object.keys(aliases).find(a=>text.includes(a));if(alias)name=aliases[alias];}
+  if(!name&&!certain)name=[...groups.keys()].find(d=>n.title.startsWith(d+'关于'));
+  if(!name)name=certain&&!/统一公开|分流/.test(pub)?pub:'南京市栖霞区人民政府';
+  add(name,related)[key].push(n);
+ }
+ return [...groups.values()];
+}
