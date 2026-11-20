@@ -3,6 +3,8 @@ import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const {query}=await import(new URL(process.env.SITE_SEARCH_MODULE||'../../search.mjs',import.meta.url));
+// Archived previews retain their original statistics contract.
+function statisticsFields(stats){return [['s-sites',Object.hasOwn(stats,'not_found')?'configured':'checked'],['s-updated','updated'],['s-empty',Object.hasOwn(stats,'not_found')?'not_found':'empty']];}
 const base=process.env.SITE_URL;
 const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 assert.ok(base?.startsWith('https://'),'HTTPS site URL required');
@@ -29,7 +31,7 @@ try{
    assert.equal(Number(await page.locator('#s-items').innerText()),expected.length);
    assert.equal(await page.locator('.item-name').count(),expected.length);
    const stats=query(data,{start,end}).stats;
-   for(const [id,key] of [['s-sites','configured'],['s-updated','updated'],['s-empty','not_found']])assert.equal(Number(await page.locator('#'+id).innerText()),stats[key]);
+   for(const [id,key] of statisticsFields(stats))assert.equal(Number(await page.locator('#'+id).innerText()),stats[key]);
    for(const n of expected){const matches=await page.locator('a.item-name').evaluateAll((es,n)=>es.filter(e=>e.textContent===n.title&&e.getAttribute('href')===n.url).length,n);assert.equal(matches,1);}
    checks.push({range:days===1?'today':`last_${days}_days`,start,end,records:expected.length,statistics:stats});
   }
