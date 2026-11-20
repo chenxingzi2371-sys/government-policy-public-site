@@ -3,6 +3,8 @@ import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const {query}=await import(new URL(process.env.SITE_SEARCH_MODULE||'../../search.mjs',import.meta.url));
+// Archived previews retain their original statistics contract.
+function statisticsFields(stats){return [['s-sites',Object.hasOwn(stats,'not_found')?'configured':'checked'],['s-updated','updated'],['s-empty',Object.hasOwn(stats,'not_found')?'not_found':'empty']];}
 const base=process.env.SITE_URL;
 const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 assert.ok(base?.startsWith('https://'),'HTTPS site URL required');
@@ -11,6 +13,7 @@ const response=await fetch(new URL('data/public.json',base),{credentials:'omit'}
 assert.equal(response.status,200);
 const data=await response.json();const strictCatalogue=data.schema_version===2;assert.ok([1,2].includes(data.schema_version));assert.deepEqual(data,JSON.parse(fs.readFileSync(process.env.SITE_DATA_FILE||'data/public.json')),'Served data must match the deployed snapshot');
 assert.equal(new Set(data.announcements.map(n=>n.id)).size,data.announcements.length);
+const modern=Object.hasOwn(query(data,{start:today,end:today}).stats,'not_found');
 const results={url:base,anonymous:true,data_http:200,data_records:data.announcements.length,configured_websites:new Set(data.sources.map(s=>s.website)).size,configured_columns:data.sources.length,viewports:[]};
 const browser=await chromium.launch();
 try{
@@ -29,7 +32,7 @@ try{
    assert.equal(Number(await page.locator('#s-items').innerText()),expected.length);
    assert.equal(await page.locator('.item-name').count(),expected.length);
    const stats=query(data,{start,end}).stats;
-   for(const [id,key] of [['s-sites','configured'],['s-updated','updated'],['s-empty','not_found']])assert.equal(Number(await page.locator('#'+id).innerText()),stats[key]);
+   for(const [id,key] of statisticsFields(stats))assert.equal(Number(await page.locator('#'+id).innerText()),stats[key]);
    for(const n of expected){const matches=await page.locator('a.item-name').evaluateAll((es,n)=>es.filter(e=>e.textContent===n.title&&e.getAttribute('href')===n.url).length,n);assert.equal(matches,1);}
    checks.push({range:days===1?'today':`last_${days}_days`,start,end,records:expected.length,statistics:stats});
   }
@@ -52,7 +55,7 @@ try{
   const columnLinks=await page.locator('a.column-link').all();if(strictCatalogue){assert.deepEqual(new Set(await page.locator('a.column-link').evaluateAll(es=>es.map(e=>e.getAttribute('href')))),new Set(data.sources.map(s=>s.url)));
   assert.equal(await page.getByRole('link',{name:'官方栏目 ↗',exact:true}).count(),0);
   for(const a of columnLinks){assert.ok((await a.textContent())&&expectedColumns.has(await a.getAttribute('href')));assert.equal(await a.getAttribute('target'),'_blank');}
-  await page.locator('.column-details summary').first().click();assert.ok(await page.locator('a.column-link').first().isVisible());
+  await page.locator('details').filter({has:page.locator('a.column-link')}).first().locator('summary').click();assert.ok(await page.locator('a.column-link').first().isVisible());
   }
   for(const area of await page.locator('.announcement-section').all()){
    assert.notEqual(await area.getAttribute('open'),null);
@@ -60,9 +63,11 @@ try{
    for(const id of await area.locator('.item-name').evaluateAll(es=>es.map(e=>e.dataset.noticeId)))assert.equal(data.announcements.find(n=>n.id===id).type,type);
    await area.locator('summary').click();assert.equal(await area.getAttribute('open'),null);await area.locator('summary').click();
   }
-  assert.equal(await page.locator('.issue-date').count(),all.filter(n=>n.issue_date).length+(data.undated_announcements||[]).filter(n=>n.issue_date).length);
-  assert.equal(Number(await page.locator('#s-sites').innerText()),Number(await page.locator('#s-updated').innerText())+Number(await page.locator('#s-empty').innerText()));
-  for(const phrase of ['待核验','覆盖不足','正文未核验','附件未核验'])assert.ok(!(await page.locator('main').innerText()).includes(phrase));
+  if(modern)assert.equal(await page.locator('.issue-date').count(),all.filter(n=>n.issue_date).length+(data.undated_announcements||[]).filter(n=>n.issue_date).length);
+  if(modern)assert.equal(Number(await page.locator('#s-sites').innerText()),Number(await page.locator('#s-updated').innerText())+Number(await page.locator('#s-empty').innerText()));
+  for(const n of all){const row=page.locator('.item').filter({has:page.locator('a.item-name[data-notice-id="'+n.id+'"]')});assert.ok((await row.innerText()).includes('官网公开日期：'+n.public_date));if(n.issue_date)assert.ok((await row.innerText()).includes(n.issue_date));}
+  if(!modern){const oldStats=query(data,{start:earliest,end:today}).stats;assert.ok(oldStats.empty<=oldStats.configured-oldStats.updated);}
+  if(modern)for(const phrase of ['待核验','覆盖不足','正文未核验','附件未核验'])assert.ok(!(await page.locator('main').innerText()).includes(phrase));
   for(const a of await page.locator('a.home').all()){const u=new URL(await a.getAttribute('href'));assert.ok(['http:','https:'].includes(u.protocol)&&u.hostname.endsWith('.gov.cn'));}
   if(name==='desktop'){
    const target=all[0];const popupReady=page.waitForEvent('popup');await page.locator('a.item-name').filter({hasText:target.title}).first().click();const popup=await popupReady;
