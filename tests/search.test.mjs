@@ -15,7 +15,7 @@ test('project directory includes unconfirmed notices without claiming confirmed 
 test('actual archive older than ten years remains searchable by official publication date',()=>{const data={sources:[source('a')],announcements:[item('old','2008-11-26'),item('new','2026-11-17')]};const result=query(data,{start:'2008-11-26',end:'2026-11-18'});assert.equal(result.items.length,2);assert.equal(result.stats.items,2);assert.equal(result.stats.empty,0);assert.equal(result.stats.abnormal,1);});
 import {announcementSections,columnLabel} from '../search.mjs';
 test('19 configured websites minus 11 updated is 8 not found, independent of successful checks',()=>{const sources=Array.from({length:19},(_,i)=>({...source(String(i),i<11?'ok':'error'),website:i+'.gov.cn'}));const announcements=sources.slice(0,11).map((s,i)=>({...item(String(i)),source_ids:[s.id]}));const r=query({sources,announcements},f);assert.equal(r.stats.configured,19);assert.equal(r.stats.updated,11);assert.equal(r.stats.not_found,8);assert.equal(r.stats.empty,0);assert.equal(r.stats.abnormal,8);assert.equal(query({sources,announcements},{...f,q:'不存在'}).stats.not_found,19);});
-test('two collapsible types have exact members, undated stays in corresponding type and empty types omitted',()=>{const p={...item('p'),type:'project'},n=item('n'),u={...item('u'),public_date:null};const sections=announcementSections([p,n],[u]);assert.deepEqual(sections.map(s=>[s.type,s.items.map(n=>n.id),s.undated.map(n=>n.id)]),[['project',['p'],[]],['policy',['n'],['u']]]);assert.equal(announcementSections([p]).length,1);assert.deepEqual(announcementSections([]),[]);});
+test('date-range type sections exclude unknown dates, which have their own region',()=>{const p={...item('p'),type:'project'},n=item('n'),u={...item('u'),public_date:null};const sections=announcementSections([p,n],[u]);assert.deepEqual(sections.map(s=>[s.type,s.items.map(n=>n.id),s.undated.map(n=>n.id)]),[['project',['p'],[]],['policy',['n'],[]]]);assert.equal(announcementSections([p]).length,1);assert.deepEqual(announcementSections([]),[]);});
 test('public column labels omit internal qualifiers, retaining real column name',()=>{assert.equal(columnLabel('省级部门政府信息公开目录（文件子栏目待核验）'),'省级部门政府信息公开目录');assert.equal(columnLabel('部门文件（含行政规范性文件）'),'部门文件（含行政规范性文件）');});
 import {departmentGroups} from '../search.mjs';
 test('Qixia shared sources route by official issuer, not host or topic; global notices remain unique',()=>{const s={...source('shared'),departments:['栖霞区政府统一公开栏目（需按发布机构分流）','栖霞区工业和信息化局','栖霞区科学技术局','南京市栖霞区人民政府']};const a={...item('a'),level:'qixia',source_ids:['shared'],publisher:'栖霞区科学技术局'},b={...item('b'),level:'qixia',source_ids:['shared'],publisher:'栖霞区工业和信息化局'},c={...item('c'),level:'qixia',source_ids:['shared'],publisher:'南京市栖霞区人民政府'};const groups=departmentGroups([s],[a,b,c],[],'qixia');assert.equal(groups.find(g=>g.name==='栖霞区科学技术局').groupItems[0].id,'a');assert.equal(groups.find(g=>g.name==='栖霞区工业和信息化局').groupItems[0].id,'b');assert.equal(groups.flatMap(g=>g.groupItems).length,3);assert.ok(groups.every(g=>!g.name.includes('统一公开')));assert.equal(groups.find(g=>g.name==='南京市栖霞区人民政府').groupItems[0].id,'c');});
@@ -45,3 +45,37 @@ test('unconfirmed shared district publisher is not invented as a government or s
  assert.equal(groups.find(g=>g.groupItems.length).name,'栖霞区公告（发布机构未明确）');
  assert.equal(groups.flatMap(g=>g.groupItems).length,1);
 });
+
+import {projectStatus,openArchive,enterpriseDeadlineLines,beijingDay} from '../search.mjs';
+const asof=new Date('2026-11-23T18:30:00+08:00');
+const window=(start,end,phase='online')=>({batch:null,phase,start_date:start,start_time:'09:00',end_date:end,end_time:'18:30'});
+const reviewed=(windows,extra={})=>({application:{evidence_complete:true,windows,alternatives:false,...extra},link:{status:'valid'}});
+test('expired November 11 official window is neither today nor currently open on November 23',()=>{
+ const n={...item('expired','2026-10-27'),type:'project'};const d={sources:[source('a')],announcements:[n],announcement_reviews:{expired:reviewed([window('2026-10-29','2026-11-11')])}};
+ assert.equal(query(d,{start:'2026-11-23',end:'2026-11-23'}).items.length,0);assert.equal(projectStatus(n,d.announcement_reviews.expired,asof),'closed');assert.deepEqual(openArchive(d,{start:'2026-11-23',end:'2026-11-23'},asof),[]);
+});
+test('unknown and invalid official dates never enter any date interval',()=>{
+ const bad={...item('bad'),public_date:'2026-11-99'},unknown={...item('unknown'),public_date:null};const d={sources:[source('a')],announcements:[bad],undated_announcements:[unknown]};
+ for(const days of [1,3,7,30]){const range=quickRange(days,asof),r=query(d,range);assert.equal(r.items.length,0);assert.equal(r.stats.items,0);assert.equal(r.undated.length,2);assert.equal(announcementSections(r.items,r.undated).length,0);}
+});
+test('a historical open project stays outside today and has its separate open archive view',()=>{
+ const n={...item('open','2026-11-01'),type:'project'};const d={sources:[source('a')],announcements:[n],announcement_reviews:{open:reviewed([window('2026-11-01','2026-11-30')])}};
+ const filter={start:'2026-11-23',end:'2026-11-23'};assert.equal(query(d,filter).items.length,0);assert.deepEqual(openArchive(d,filter,asof).map(n=>n.id),['open']);assert.equal(query(d,filter).stats.items,0);
+});
+test('a true official new project is counted by publication, not by current eligibility',()=>{
+ const n={...item('new','2026-11-23'),type:'project'};const d={sources:[source('a')],announcements:[n]};assert.equal(query(d,{start:'2026-11-23',end:'2026-11-23'}).items.length,1);
+});
+test('application phases do not all close from one closed endpoint; policy has no application status',()=>{
+ const n={...item(),type:'project'},r=reviewed([window('2026-11-01','2026-11-11'),window('2026-11-01','2026-11-30','paper')]);assert.equal(projectStatus(n,r,asof),'partial');assert.equal(projectStatus({...n,type:'policy'},r,asof),null);
+});
+test('verified extension updates the end, while a missing start cannot invent an open opportunity',()=>{
+ const n={...item(),type:'project'};assert.equal(projectStatus(n,reviewed([window('2026-11-01','2026-11-30')],{change:'extended'}),asof),'open');const w=window(null,'2026-11-30');w.start_time=null;assert.equal(projectStatus(n,reviewed([w]),asof),'unknown');
+});
+test('Beijing day and deadline seconds are independent of browser local UTC',()=>{
+ const n={...item(),type:'project'},r=reviewed([window('2026-11-01','2026-11-23')]);assert.equal(projectStatus(n,r,asof),'open');assert.equal(projectStatus(n,r,new Date(asof.getTime()+1000)),'closed');assert.equal(beijingDay(new Date('2026-11-23T17:00:00Z')),'2026-11-24');
+});
+test('policies never show enterprise cutoff lines and explicit batches keep their own deadlines',()=>{
+ const n={...item(),type:'policy'};assert.deepEqual(enterpriseDeadlineLines(n,reviewed([window('2026-11-01','2026-11-30')])),[]);const w=window('2026-11-01','2026-11-30');w.batch='第二批';assert.match(enterpriseDeadlineLines({...n,type:'project'},reviewed([w]))[0],/^第二批 · 企业网上申报截止：2026-11-30 18:30$/);
+});
+
+test('incomplete current cutoff evidence cannot display a conflicting legacy numeric deadline',()=>{const n={...item(),type:'project',deadlines:[{date:'2026-11-11',time:null,phase:'online'}]};assert.deepEqual(enterpriseDeadlineLines(n,reviewed([],{evidence_complete:false})),[]);});

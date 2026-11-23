@@ -41,7 +41,7 @@ jobs:
           curl --fail --retry 6 --retry-delay 10 --proto '=https' "$SITE_URL" -o /tmp/public-index.html
           grep -q '政府项目申报及涉企政策检索' /tmp/public-index.html
           curl --fail --retry 6 --retry-delay 10 --proto '=https' "${SITE_URL}data/public.json" -o /tmp/public-data.json
-          node --input-type=module -e 'import fs from "node:fs";const d=JSON.parse(fs.readFileSync("/tmp/public-data.json"));if(![1,2].includes(d.schema_version)||!Array.isArray(d.announcements))process.exit(1);console.log("ANONYMOUS_HTTPS_OK=true; ANNOUNCEMENTS="+d.announcements.length);'
+          node --input-type=module -e 'import fs from "node:fs";const d=JSON.parse(fs.readFileSync("/tmp/public-data.json"));if(![1,2,3].includes(d.schema_version)||!Array.isArray(d.announcements))process.exit(1);console.log("ANONYMOUS_HTTPS_OK=true; ANNOUNCEMENTS="+d.announcements.length);'
       - uses: actions/setup-node@v4
         with:
           node-version: '22'

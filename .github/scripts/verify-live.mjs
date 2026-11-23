@@ -2,7 +2,7 @@
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-const {query}=await import(new URL(process.env.SITE_SEARCH_MODULE||'../../search.mjs',import.meta.url));
+const {query,openArchive}=await import(new URL(process.env.SITE_SEARCH_MODULE||'../../search.mjs',import.meta.url));
 // Archived previews retain their original statistics contract.
 function statisticsFields(stats){return [['s-sites',Object.hasOwn(stats,'not_found')?'configured':'checked'],['s-updated','updated'],['s-empty',Object.hasOwn(stats,'not_found')?'not_found':'empty']];}
 const base=process.env.SITE_URL;
@@ -11,7 +11,7 @@ assert.ok(base?.startsWith('https://'),'HTTPS site URL required');
 const output=process.env.SITE_RESULTS_DIR||'live-verification';fs.mkdirSync(output,{recursive:true});
 const response=await fetch(new URL('data/public.json',base),{credentials:'omit'});
 assert.equal(response.status,200);
-const data=await response.json();const strictCatalogue=data.schema_version===2;assert.ok([1,2].includes(data.schema_version));assert.deepEqual(data,JSON.parse(fs.readFileSync(process.env.SITE_DATA_FILE||'data/public.json')),'Served data must match the deployed snapshot');
+const data=await response.json();const strictCatalogue=data.schema_version>=2;assert.ok([1,2,3].includes(data.schema_version));assert.deepEqual(data,JSON.parse(fs.readFileSync(process.env.SITE_DATA_FILE||'data/public.json')),'Served data must match the deployed snapshot');
 assert.equal(new Set(data.announcements.map(n=>n.id)).size,data.announcements.length);
 const modern=Object.hasOwn(query(data,{start:today,end:today}).stats,'not_found');
 const results={url:base,anonymous:true,data_http:200,data_records:data.announcements.length,configured_websites:new Set(data.sources.map(s=>s.website)).size,configured_columns:data.sources.length,viewports:[]};
@@ -63,7 +63,8 @@ try{
    for(const id of await area.locator('.item-name').evaluateAll(es=>es.map(e=>e.dataset.noticeId)))assert.equal(data.announcements.find(n=>n.id===id).type,type);
    await area.locator('summary').click();assert.equal(await area.getAttribute('open'),null);await area.locator('summary').click();
   }
-  if(modern)assert.equal(await page.locator('.issue-date').count(),all.filter(n=>n.issue_date).length+(data.undated_announcements||[]).filter(n=>n.issue_date).length);
+  if(modern)assert.equal(await page.locator('#sources .issue-date').count(),all.filter(n=>n.issue_date).length);
+  if(data.schema_version>=3){assert.equal(await page.locator('#sources .undated-name').count(),0);const active=openArchive(data,{start:earliest,end:today});assert.deepEqual(new Set(await page.locator('.open-archive-name').evaluateAll(es=>es.map(e=>e.dataset.noticeId))),new Set(active.map(n=>n.id)));}
   if(modern)assert.equal(Number(await page.locator('#s-sites').innerText()),Number(await page.locator('#s-updated').innerText())+Number(await page.locator('#s-empty').innerText()));
   for(const n of all){const row=page.locator('.item').filter({has:page.locator('a.item-name[data-notice-id="'+n.id+'"]')});assert.ok((await row.innerText()).includes('官网公开日期：'+n.public_date));if(n.issue_date)assert.ok((await row.innerText()).includes(n.issue_date));}
   if(!modern){const oldStats=query(data,{start:earliest,end:today}).stats;assert.ok(oldStats.empty<=oldStats.configured-oldStats.updated);}
