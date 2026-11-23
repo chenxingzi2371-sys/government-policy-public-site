@@ -15,9 +15,9 @@ export function query(data,filter){const {start,end,q='',level='all',sector='all
  const base=data.announcements.filter(n=>n.public_date>=start&&n.public_date<=end&&n.source_ids.some(id=>sourceIds.has(id))&&(level==='all'||n.level===level)&&(sector==='all'||n.sector===sector));
  const items=base.filter(n=>matchesType(n)&&matchesSearch(n));
  const websites=[...new Set(sources.map(s=>s.website))];
- const stats={checked:0,updated:0,items:items.length,empty:0,abnormal:0,not_found:0,columns:sources.length,configured:websites.length,column_checked:0,column_updated:0,column_empty:0,column_abnormal:0};
- for(const s of sources){if(s.checks.some(c=>c.date>=start&&c.date<=end))stats.column_checked++;if(items.some(n=>n.source_ids.includes(s.id)))stats.column_updated++;if((sourceHealth(s,start,end)!=='ok'||unresolved.has(s.id)))stats.column_abnormal++;else if(!base.some(n=>n.source_ids.includes(s.id)))stats.column_empty++;}
- for(const site of websites){const cols=sources.filter(s=>s.website===site),ids=new Set(cols.map(s=>s.id));const checked=cols.some(s=>s.checks.some(c=>c.date>=start&&c.date<=end));const healthy=cols.every(s=>sourceHealth(s,start,end)==='ok'&&!unresolved.has(s.id));if(checked)stats.checked++;if(items.some(n=>n.source_ids.some(id=>ids.has(id))))stats.updated++;if(!healthy)stats.abnormal++;else if(!base.some(n=>n.source_ids.some(id=>ids.has(id))))stats.empty++;}
+ const stats={checked:0,updated:0,items:items.length,empty:0,abnormal:0,not_found:0,metadata_pending:undated.length,columns:sources.length,configured:websites.length,column_checked:0,column_updated:0,column_empty:0,column_abnormal:0};
+ for(const s of sources){if(s.checks.some(c=>c.date>=start&&c.date<=end))stats.column_checked++;if(items.some(n=>n.source_ids.includes(s.id)))stats.column_updated++;if(sourceHealth(s,start,end)!=='ok')stats.column_abnormal++;else if(!unresolved.has(s.id)&&!base.some(n=>n.source_ids.includes(s.id)))stats.column_empty++;}
+ for(const site of websites){const cols=sources.filter(s=>s.website===site),ids=new Set(cols.map(s=>s.id));const checked=cols.some(s=>s.checks.some(c=>c.date>=start&&c.date<=end));const healthy=cols.every(s=>sourceHealth(s,start,end)==='ok');if(checked)stats.checked++;if(items.some(n=>n.source_ids.some(id=>ids.has(id))))stats.updated++;if(!healthy)stats.abnormal++;else if(!cols.some(s=>unresolved.has(s.id))&&!base.some(n=>n.source_ids.some(id=>ids.has(id))))stats.empty++;}
  stats.not_found=stats.configured-stats.updated;
  return {sources,items,stats,undated};}
 export function exportCSV(items){const cell=value=>{let s=String(value??'');if(/^[\s]*[=+@-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};const rows=[['官网公开日期','文件发文日期','完整标题','发布部门','类型','官方原文链接','已核实企业申报截止'],...items.map(n=>[n.public_date,n.issue_date||'未明确标注',n.title,n.publisher,n.type==='project'?'项目申报':'涉企政策',n.url,n.deadlines.map(d=>d.phase+':'+d.date+(d.time?' '+d.time:'')).join('；')])];return '\ufeff'+rows.map(r=>r.map(cell).join(',')).join('\r\n');}
@@ -45,7 +45,7 @@ export function departmentGroups(sources,items,undated,level){
   let name=[...groups.keys()].sort((a,b)=>b.length-a.length).find(d=>certain&&normal(pub).includes(normal(d)));
   if(!name){const text=certain?pub:n.title;const alias=Object.keys(aliases).find(a=>text.includes(a));if(alias)name=aliases[alias];}
   if(!name&&!certain)name=[...groups.keys()].find(d=>n.title.startsWith(d+'关于'));
-  if(!name)name=certain&&!/统一公开|分流/.test(pub)?pub:'南京市栖霞区人民政府';
+  if(!name)name=certain&&!/统一公开|分流/.test(pub)?pub:'栖霞区公告（发布机构未明确）';
   add(name,related)[key].push(n);
  }
  return [...groups.values()];
