@@ -22,12 +22,14 @@ export function query(data,filter){const {start,end,q='',level='all',sector='all
  for(const site of websites){const cols=sources.filter(s=>s.website===site),ids=new Set(cols.map(s=>s.id));const checked=cols.some(s=>s.checks.some(c=>c.date>=start&&c.date<=end));const healthy=cols.every(s=>sourceHealth(s,start,end)==='ok');if(checked)stats.checked++;if(items.some(n=>n.source_ids.some(id=>ids.has(id))))stats.updated++;if(!healthy)stats.abnormal++;else if(!cols.some(s=>unresolved.has(s.id))&&!base.some(n=>n.source_ids.some(id=>ids.has(id))))stats.empty++;}
  stats.not_found=stats.configured-stats.updated;
  return {sources,items,stats,undated};}
-export function exportCSV(items){const cell=value=>{let s=String(value??'');if(/^[\s]*[=+@-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};const rows=[['官网公开日期','文件发文日期','完整标题','发布部门','类型','官方原文链接','已核实企业申报截止'],...items.map(n=>[n.public_date,n.issue_date||'未明确标注',n.title,n.publisher,n.type==='project'?'项目申报':'涉企政策',n.url,n.deadlines.map(d=>d.phase+':'+d.date+(d.time?' '+d.time:'')).join('；')])];return '\ufeff'+rows.map(r=>r.map(cell).join(',')).join('\r\n');}
+export function exportCSV(items){const cell=value=>{let s=String(value??'');if(/^[\s]*[=+@-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};const rows=[['官网公开日期','文件发文日期','完整标题','发布部门','类型','官方原文链接','已核实企业申报截止'],...items.map(n=>[n.public_date,n.issue_date||'未明确标注',n.title,displayPublisher(n),n.type==='project'?'项目申报':'涉企政策',n.url,n.deadlines.map(d=>d.phase+':'+d.date+(d.time?' '+d.time:'')).join('；')])];return '\ufeff'+rows.map(r=>r.map(cell).join(',')).join('\r\n');}
 
 // Public presentation only: internal check states and date precision stay intact.
 export function announcementSections(items){return [['project','项目申报'],['policy','涉企政策']].map(([type,label])=>({type,label,items:items.filter(n=>n.type===type&&verifiedDay(n)),undated:[]})).filter(s=>s.items.length);}
 export function columnLabel(name){return name.replace(/（[^）]*(?:待核验|跟踪官方|历史目录|日期独立|原法规库)[^）]*）/g,'');}
 
+function scienceIssuer(value){return !(/未明确|未知|待确认|统一公开|分流/.test(value||''))&&(/(?:^|[、，,\s])(?:南京市)?栖霞区(?:科学技术局|科技局)(?:办公室)?(?:$|[、，,\s（(])/.test((value||'').trim())||/^区科技局$/.test((value||'').trim()));}
+export function qixiaCard(n){return scienceIssuer(n.publisher)?'栖霞区科技局':'栖霞区工信、市场监管、人社、环保、应急等部门';}
 // Shared district host is a collection location, not an issuing department.
 export function departmentGroups(sources,items,undated,level){
  const groups=new Map(),seen=new Set();
@@ -37,20 +39,19 @@ export function departmentGroups(sources,items,undated,level){
   for(const g of groups.values())for(const [rows,key] of [[items,'groupItems'],[undated,'unknown']])for(const n of rows){if(!seen.has(n.id)&&n.source_ids.some(id=>g.cols.some(c=>c.id===id))){g[key].push(n);seen.add(n.id);}}
   return [...groups.values()];
  }
- const normal=s=>s.replace(/^南京市/,'').replace(/人力资源和社会保障/g,'人力资源社会保障').replace(/经济和信息化/g,'工业和信息化');
- for(const s of sources){const names=s.departments.filter(name=>!/统一公开|分流/.test(name));for(const name of names.length?names:['南京市栖霞区人民政府'])add(name,[s]);}
- const aliases={'区工信局':'栖霞区工业和信息化局','区科技局':'栖霞区科学技术局','区应急管理局':'栖霞区应急管理局','区市场监管局':'南京市栖霞区市场监督管理局','区人社局':'南京市栖霞区人力资源和社会保障局','栖霞生态环境局':'南京市栖霞生态环境局'};
+ const science='栖霞区科技局',other='栖霞区工信、市场监管、人社、环保、应急等部门';
+
+ const dedicated=sources.filter(s=>s.departments.length===1&&scienceIssuer(s.departments[0]));
+ add(science,dedicated);add(other,sources.filter(s=>!dedicated.some(c=>c.id===s.id)));
  for(const [rows,key] of [[items,'groupItems'],[undated,'unknown']])for(const n of rows){
-  if(seen.has(n.id))continue;seen.add(n.id);
+  if(seen.has(n.id))continue;
   const related=sources.filter(s=>n.source_ids.includes(s.id));if(!related.length)continue;
-  const pub=n.publisher||'',certain=pub&&!/未明确|未知|待确认/.test(pub);
-  let name=[...groups.keys()].sort((a,b)=>b.length-a.length).find(d=>certain&&normal(pub).includes(normal(d)));
-  if(!name){const text=certain?pub:n.title;const alias=Object.keys(aliases).find(a=>text.includes(a));if(alias)name=aliases[alias];}
-  if(!name&&!certain)name=[...groups.keys()].find(d=>n.title.startsWith(d+'关于'));
-  if(!name)name=certain&&!/统一公开|分流/.test(pub)?pub:'栖霞区公告（发布机构未明确）';
-  add(name,related)[key].push(n);
+  seen.add(n.id);
+  // Issuer evidence, never a science topic, headline or shared host, controls
+  // the science card. The upstream exporter preserves unconfirmed issuers.
+  add(qixiaCard(n),related)[key].push(n);
  }
- return [...groups.values()];
+ return [...groups.values()].filter(g=>g.cols.length);
 }
 
 // Application eligibility is a separate clock from official publication filters.
@@ -91,3 +92,6 @@ export function enterpriseDeadlineLines(n,review){
  if(windows)return windows.map(w=>(w.batch?w.batch+' · ':'')+(labels[w.phase]||'企业申报截止')+'：'+w.end_date+(w.end_time?' '+w.end_time:''));
  return (n.deadlines||[]).map(d=>(labels[d.phase]||'企业申报截止')+'：'+d.date+(d.time?' '+d.time:''));
 }
+
+// Group names are navigation labels; they never replace the actual issuer.
+export function displayPublisher(n){return n.level==='qixia'&&(!n.publisher||/未明确|未知|待确认|统一公开|分流/.test(n.publisher))?'发布机构待确认':n.publisher;}
