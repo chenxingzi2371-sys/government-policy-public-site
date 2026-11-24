@@ -1,0 +1,174 @@
+{
+  "checks": [
+    {
+      "viewport": "desktop",
+      "ranges": [
+        {
+          "days": 1,
+          "start": "2026-11-24",
+          "end": "2026-11-24",
+          "items": 1,
+          "configured": 19,
+          "updated": 1,
+          "not_found": 18
+        },
+        {
+          "days": 3,
+          "start": "2026-11-22",
+          "end": "2026-11-24",
+          "items": 3,
+          "configured": 19,
+          "updated": 3,
+          "not_found": 16
+        },
+        {
+          "days": 7,
+          "start": "2026-11-18",
+          "end": "2026-11-24",
+          "items": 16,
+          "configured": 19,
+          "updated": 8,
+          "not_found": 11
+        },
+        {
+          "days": 30,
+          "start": "2026-10-26",
+          "end": "2026-11-24",
+          "items": 83,
+          "configured": 19,
+          "updated": 17,
+          "not_found": 2
+        }
+      ],
+      "width": 1440,
+      "columns": 2,
+      "overflow": false,
+      "last_30_days_records": 83,
+      "unique_title_links": 83,
+      "column_name_links": 91,
+      "selected_table_csv": "passed",
+      "search_and_type": "passed",
+      "custom_date": "passed",
+      "cached_failure_fallback": "passed",
+      "type_sections_collapse": "passed",
+      "statistics_identity": "passed",
+      "unknown_issue_dates_hidden": "passed",
+      "technical_labels_hidden": "passed",
+      "js_errors": []
+    },
+    {
+      "viewport": "mobile",
+      "ranges": [
+        {
+          "days": 1,
+          "start": "2026-11-24",
+          "end": "2026-11-24",
+          "items": 1,
+          "configured": 19,
+          "updated": 1,
+          "not_found": 18
+        },
+        {
+          "days": 3,
+          "start": "2026-11-22",
+          "end": "2026-11-24",
+          "items": 3,
+          "configured": 19,
+          "updated": 3,
+          "not_found": 16
+        },
+        {
+          "days": 7,
+          "start": "2026-11-18",
+          "end": "2026-11-24",
+          "items": 16,
+          "configured": 19,
+          "updated": 8,
+          "not_found": 11
+        },
+        {
+          "days": 30,
+          "start": "2026-10-26",
+          "end": "2026-11-24",
+          "items": 83,
+          "configured": 19,
+          "updated": 17,
+          "not_found": 2
+        }
+      ],
+      "width": 390,
+      "columns": 1,
+      "overflow": false,
+      "last_30_days_records": 83,
+      "unique_title_links": 83,
+      "column_name_links": 91,
+      "selected_table_csv": "passed",
+      "search_and_type": "passed",
+      "custom_date": "passed",
+      "cached_failure_fallback": "passed",
+      "type_sections_collapse": "passed",
+      "statistics_identity": "passed",
+      "unknown_issue_dates_hidden": "passed",
+      "technical_labels_hidden": "passed",
+      "js_errors": []
+    },
+    {
+      "viewport": "small-mobile",
+      "ranges": [
+        {
+          "days": 1,
+          "start": "2026-11-24",
+          "end": "2026-11-24",
+          "items": 1,
+          "configured": 19,
+          "updated": 1,
+          "not_found": 18
+        },
+        {
+          "days": 3,
+          "start": "2026-11-22",
+          "end": "2026-11-24",
+          "items": 3,
+          "configured": 19,
+          "updated": 3,
+          "not_found": 16
+        },
+        {
+          "days": 7,
+          "start": "2026-11-18",
+          "end": "2026-11-24",
+          "items": 16,
+          "configured": 19,
+          "updated": 8,
+          "not_found": 11
+        },
+        {
+          "days": 30,
+          "start": "2026-10-26",
+          "end": "2026-11-24",
+          "items": 83,
+          "configured": 19,
+          "updated": 17,
+          "not_found": 2
+        }
+      ],
+      "width": 320,
+      "columns": 1,
+      "overflow": false,
+      "last_30_days_records": 83,
+      "unique_title_links": 83,
+      "column_name_links": 91,
+      "selected_table_csv": "passed",
+      "search_and_type": "passed",
+      "custom_date": "passed",
+      "cached_failure_fallback": "passed",
+      "type_sections_collapse": "passed",
+      "statistics_identity": "passed",
+      "unknown_issue_dates_hidden": "passed",
+      "technical_labels_hidden": "passed",
+      "js_errors": []
+    }
+  ],
+  "first_visit_data_failure": "unknown_not_zero",
+  "no_real_delivery": true
+}
