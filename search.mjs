@@ -29,7 +29,7 @@ export function announcementSections(items){return [['project','项目申报'],[
 export function columnLabel(name){return name.replace(/（[^）]*(?:待核验|跟踪官方|历史目录|日期独立|原法规库)[^）]*）/g,'');}
 
 function scienceIssuer(value){return !(/未明确|未知|待确认|统一公开|分流/.test(value||''))&&(/(?:^|[、，,\s])(?:南京市)?栖霞区(?:科学技术局|科技局)(?:办公室)?(?:$|[、，,\s（(])/.test((value||'').trim())||/^区科技局$/.test((value||'').trim()));}
-export function qixiaCard(n){return scienceIssuer(n.publisher)?'栖霞区科技局':'栖霞区其他涉企部门';}
+export function qixiaCard(n){return scienceIssuer(n.publisher)?'栖霞区科技局':'栖霞区工信、市场监管、人社、环保、应急等部门';}
 // Shared district host is a collection location, not an issuing department.
 export function departmentGroups(sources,items,undated,level){
  const groups=new Map(),seen=new Set();
@@ -39,7 +39,7 @@ export function departmentGroups(sources,items,undated,level){
   for(const g of groups.values())for(const [rows,key] of [[items,'groupItems'],[undated,'unknown']])for(const n of rows){if(!seen.has(n.id)&&n.source_ids.some(id=>g.cols.some(c=>c.id===id))){g[key].push(n);seen.add(n.id);}}
   return [...groups.values()];
  }
- const science='栖霞区科技局',other='栖霞区其他涉企部门';
+ const science='栖霞区科技局',other='栖霞区工信、市场监管、人社、环保、应急等部门';
 
  const dedicated=sources.filter(s=>s.departments.length===1&&scienceIssuer(s.departments[0]));
  add(science,dedicated);add(other,sources.filter(s=>!dedicated.some(c=>c.id===s.id)));

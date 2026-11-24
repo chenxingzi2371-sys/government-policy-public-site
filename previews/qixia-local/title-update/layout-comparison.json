@@ -1,0 +1,129 @@
+{
+  "source_batch": {
+    "id": "9aa3187791d374faa69542ba6d19a248adfc814a9b86304efef9f761a594f34f",
+    "completed_at": "2026-11-24T09:13:22.740122+08:00"
+  },
+  "same_real_data_for_both": true,
+  "unchanged_visual_assets": {
+    "index.html": "02625cdfc2d90af6d31320693a4a1907f0c44269c1cff4f619df31aa0c2a9694",
+    "style.css": "5e2b34959678079f127b7b882d05c5e03bff261475b839c4510241ee6b1f1b10"
+  },
+  "results": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "before_cards": [
+        "栖霞区科技局",
+        "栖霞区其他涉企部门"
+      ],
+      "after_cards": [
+        "栖霞区科技局",
+        "栖霞区工信、市场监管、人社、环保、应急等部门"
+      ],
+      "qixia_announcements": 2,
+      "same_non_qixia_pixels": true,
+      "non_qixia_dom_identical": true,
+      "statistics_and_date_queries_identical": true,
+      "all_91_source_links_retained": true,
+      "no_duplicate_notices": true,
+      "no_horizontal_overflow": true,
+      "filtered_qixia_cards_no_error": true,
+      "ranges": [
+        {
+          "days": 1,
+          "count": 1
+        },
+        {
+          "days": 3,
+          "count": 3
+        },
+        {
+          "days": 7,
+          "count": 16
+        },
+        {
+          "days": 30,
+          "count": 83
+        }
+      ]
+    },
+    {
+      "viewport": "mobile",
+      "width": 390,
+      "before_cards": [
+        "栖霞区科技局",
+        "栖霞区其他涉企部门"
+      ],
+      "after_cards": [
+        "栖霞区科技局",
+        "栖霞区工信、市场监管、人社、环保、应急等部门"
+      ],
+      "qixia_announcements": 2,
+      "same_non_qixia_pixels": true,
+      "non_qixia_dom_identical": true,
+      "statistics_and_date_queries_identical": true,
+      "all_91_source_links_retained": true,
+      "no_duplicate_notices": true,
+      "no_horizontal_overflow": true,
+      "filtered_qixia_cards_no_error": true,
+      "ranges": [
+        {
+          "days": 1,
+          "count": 1
+        },
+        {
+          "days": 3,
+          "count": 3
+        },
+        {
+          "days": 7,
+          "count": 16
+        },
+        {
+          "days": 30,
+          "count": 83
+        }
+      ]
+    },
+    {
+      "viewport": "small-mobile",
+      "width": 320,
+      "before_cards": [
+        "栖霞区科技局",
+        "栖霞区其他涉企部门"
+      ],
+      "after_cards": [
+        "栖霞区科技局",
+        "栖霞区工信、市场监管、人社、环保、应急等部门"
+      ],
+      "qixia_announcements": 2,
+      "same_non_qixia_pixels": true,
+      "non_qixia_dom_identical": true,
+      "statistics_and_date_queries_identical": true,
+      "all_91_source_links_retained": true,
+      "no_duplicate_notices": true,
+      "no_horizontal_overflow": true,
+      "filtered_qixia_cards_no_error": true,
+      "ranges": [
+        {
+          "days": 1,
+          "count": 1
+        },
+        {
+          "days": 3,
+          "count": 3
+        },
+        {
+          "days": 7,
+          "count": 16
+        },
+        {
+          "days": 30,
+          "count": 83
+        }
+      ]
+    }
+  ],
+  "real_delivery": false,
+  "published": false
+}
