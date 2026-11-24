@@ -18,9 +18,9 @@ test('19 configured websites minus 11 updated is 8 not found, independent of suc
 test('date-range type sections exclude unknown dates, which have their own region',()=>{const p={...item('p'),type:'project'},n=item('n'),u={...item('u'),public_date:null};const sections=announcementSections([p,n],[u]);assert.deepEqual(sections.map(s=>[s.type,s.items.map(n=>n.id),s.undated.map(n=>n.id)]),[['project',['p'],[]],['policy',['n'],[]]]);assert.equal(announcementSections([p]).length,1);assert.deepEqual(announcementSections([]),[]);});
 test('public column labels omit internal qualifiers, retaining real column name',()=>{assert.equal(columnLabel('省级部门政府信息公开目录（文件子栏目待核验）'),'省级部门政府信息公开目录');assert.equal(columnLabel('部门文件（含行政规范性文件）'),'部门文件（含行政规范性文件）');});
 import {departmentGroups} from '../search.mjs';
-test('Qixia shared sources route by official issuer, not host or topic; global notices remain unique',()=>{const s={...source('shared'),departments:['栖霞区政府统一公开栏目（需按发布机构分流）','栖霞区工业和信息化局','栖霞区科学技术局','南京市栖霞区人民政府']};const a={...item('a'),level:'qixia',source_ids:['shared'],publisher:'栖霞区科学技术局'},b={...item('b'),level:'qixia',source_ids:['shared'],publisher:'栖霞区工业和信息化局'},c={...item('c'),level:'qixia',source_ids:['shared'],publisher:'南京市栖霞区人民政府'};const groups=departmentGroups([s],[a,b,c],[],'qixia');assert.equal(groups.find(g=>g.name==='栖霞区科学技术局').groupItems[0].id,'a');assert.equal(groups.find(g=>g.name==='栖霞区工业和信息化局').groupItems[0].id,'b');assert.equal(groups.flatMap(g=>g.groupItems).length,3);assert.ok(groups.every(g=>!g.name.includes('统一公开')));assert.equal(groups.find(g=>g.name==='南京市栖霞区人民政府').groupItems[0].id,'c');});
+test('Qixia shared sources route by official issuer, not host or topic; global notices remain unique',()=>{const s={...source('shared'),departments:['栖霞区政府统一公开栏目（需按发布机构分流）','栖霞区工业和信息化局','栖霞区科学技术局','南京市栖霞区人民政府']};const a={...item('a'),level:'qixia',source_ids:['shared'],publisher:'栖霞区科学技术局'},b={...item('b'),level:'qixia',source_ids:['shared'],publisher:'栖霞区工业和信息化局'},c={...item('c'),level:'qixia',source_ids:['shared'],publisher:'南京市栖霞区人民政府'};const groups=departmentGroups([s],[a,b,c],[],'qixia');assert.equal(groups.find(g=>g.name==='栖霞区科技局').groupItems[0].id,'a');assert.equal(groups.find(g=>g.name==='栖霞区其他涉企部门').groupItems[0].id,'b');assert.equal(groups.flatMap(g=>g.groupItems).length,3);assert.ok(groups.every(g=>!g.name.includes('统一公开')));assert.ok(groups.find(g=>g.name==='栖霞区其他涉企部门').groupItems.some(n=>n.id==='c'));assert.equal(groups.length,2);});
 
-test('shared-only district sources retain their actual column links under government without internal labels',()=>{const s={...source('s'),departments:['栖霞区政府统一公开栏目（需按发布机构分流）']};const groups=departmentGroups([s],[],[],'qixia');assert.equal(groups[0].name,'南京市栖霞区人民政府');assert.equal(groups[0].cols[0].id,'s');});
+test('shared district source links stay in the composite card without internal labels',()=>{const s={...source('s'),departments:['栖霞区政府统一公开栏目（需按发布机构分流）']};const groups=departmentGroups([s],[],[],'qixia');assert.equal(groups.length,1);assert.equal(groups[0].name,'栖霞区其他涉企部门');assert.equal(groups[0].cols[0].id,'s');});
 
 
 test('live acceptance preserves both archived and current statistics contracts',async()=>{
@@ -42,7 +42,7 @@ test('unconfirmed shared district publisher is not invented as a government or s
  const s={...source('s'),departments:['栖霞区政府统一公开栏目（需按发布机构分流）']};
  const n={...item('u'),source_ids:['s'],level:'qixia',publisher:'发布部门未明确标注',title:'企业环保管理办法'};
  const groups=departmentGroups([s],[n],[],'qixia');
- assert.equal(groups.find(g=>g.groupItems.length).name,'栖霞区公告（发布机构未明确）');
+ assert.equal(groups.find(g=>g.groupItems.length).name,'栖霞区其他涉企部门');
  assert.equal(groups.flatMap(g=>g.groupItems).length,1);
 });
 
@@ -79,3 +79,26 @@ test('policies never show enterprise cutoff lines and explicit batches keep thei
 });
 
 test('incomplete current cutoff evidence cannot display a conflicting legacy numeric deadline',()=>{const n={...item(),type:'project',deadlines:[{date:'2026-11-11',time:null,phase:'online'}]};assert.deepEqual(enterpriseDeadlineLines(n,reviewed([],{evidence_complete:false})),[]);});
+
+
+import {displayPublisher} from '../search.mjs';
+test('Qixia merging never routes by science topic or invents an issuer',()=>{
+ const sources=[{...source('s'),departments:['栖霞区科学技术局','栖霞区工业和信息化局']}];
+ const a={...item('a'),level:'qixia',source_ids:['s'],sector:'science',publisher:'发布机构待确认',title:'关于开展科技研发项目申报的通知'};
+ const b={...a,id:'b',publisher:'栖霞区科学技术局'};
+ const groups=departmentGroups(sources,[a,b,b],[],'qixia');assert.deepEqual(groups.map(g=>g.name),['栖霞区科技局','栖霞区其他涉企部门']);
+ assert.deepEqual(groups[0].groupItems.map(n=>n.id),['b']);assert.deepEqual(groups[1].groupItems.map(n=>n.id),['a']);assert.equal(groups.flatMap(g=>g.groupItems).length,2);
+ assert.equal(displayPublisher(a),'发布机构待确认');assert.equal(displayPublisher(b),'栖霞区科学技术局');assert.equal(displayPublisher({...a,level:'jiangsu',publisher:'发布部门未明确标注'}),'发布部门未明确标注');
+});
+test('all physical district source links survive merging, including empty departments',()=>{
+ const sources=['科学技术局','工业和信息化局','市场监督管理局','人力资源和社会保障局','应急管理局'].map((d,i)=>({...source(String(i)),departments:['栖霞区'+d]}));
+ const groups=departmentGroups(sources,[],[],'qixia');assert.equal(groups.length,2);assert.deepEqual(new Set(groups.flatMap(g=>g.cols.map(c=>c.id))),new Set(sources.map(s=>s.id)));
+});
+test('national province and city grouping and original issuer fields are unchanged',()=>{
+ const s={...source('s'),departments:['原有部门']},n={...item(),source_ids:['s']};
+ for(const level of ['national','jiangsu','nanjing']){const groups=departmentGroups([s],[n],[],level);assert.equal(groups.length,1);assert.equal(groups[0].name,'原有部门');assert.equal(groups[0].groupItems[0],n);}
+});
+
+test('a filtered district source set never creates a card with no official source',()=>{const s={...source('m'),departments:['栖霞区市场监督管理局']};const groups=departmentGroups([s],[],[],'qixia');assert.equal(groups.length,1);assert.equal(groups[0].name,'栖霞区其他涉企部门');assert.ok(groups.every(g=>g.cols.length));});
+
+test('verified joint science issuer has priority once; city science and uncertain district guesses do not',()=>{const s={...source('s'),departments:['南京市栖霞区人民政府']};const rows=['栖霞区财政局、栖霞区科学技术局','南京市科学技术局','发布机构待确认 栖霞区科技局'].map((publisher,i)=>({...item(String(i)),level:'qixia',publisher,source_ids:['s']}));const groups=departmentGroups([s],rows,[],'qixia');assert.deepEqual(groups.find(g=>g.name==='栖霞区科技局').groupItems.map(n=>n.id),['0']);assert.equal(groups.find(g=>g.name==='栖霞区其他涉企部门').groupItems.length,2);});

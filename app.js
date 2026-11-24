@@ -1,4 +1,4 @@
-import {LEVELS,SECTORS,quickRange,query,exportCSV,announcementSections,columnLabel,departmentGroups,projectStatus,APPLICATION_LABELS,linkStatusLabel,openArchive,enterpriseDeadlineLines} from './search.mjs';
+import {LEVELS,SECTORS,quickRange,query,exportCSV,announcementSections,columnLabel,departmentGroups,projectStatus,APPLICATION_LABELS,linkStatusLabel,openArchive,enterpriseDeadlineLines,displayPublisher,qixiaCard} from './search.mjs';
 const $=id=>document.getElementById(id);let dataset=null,lastError='',deploymentError='';const selected=new Set();let currentItems=[];
 function el(tag,cls,content){const e=document.createElement(tag);if(cls)e.className=cls;if(content!==undefined)e.textContent=content;return e;}
 function link(url,label,cls){const a=el('a',cls,label);try{const u=new URL(url);if(!['http:','https:'].includes(u.protocol)||!u.hostname.endsWith('.gov.cn')||u.username||u.password)throw Error();a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';}catch{a.removeAttribute('href');}return a;}
@@ -16,7 +16,7 @@ function render(){if(!dataset)return;const filter={start:$('start').value,end:$(
    for(const section of announcementSections(groupItems)){
     const area=el('details','announcement-section');area.open=true;area.dataset.type=section.type;
     area.append(el('summary','',`${section.label}（${section.items.length}条）`));
-    for(const n of section.items){assigned.add(n.id);const item=el('div','item');const selectRow=el('div','item-select'),checkbox=el('input');checkbox.type='checkbox';checkbox.setAttribute('aria-label','选择公告：'+n.title);checkbox.checked=selected.has(n.id);checkbox.addEventListener('change',()=>{if(checkbox.checked)selected.add(n.id);else selected.delete(n.id);renderSelection();});const titleLink=link(n.url,n.title,'item-name');titleLink.dataset.noticeId=n.id;selectRow.append(checkbox,titleLink);item.append(selectRow);item.append(el('div','item-detail',`${SECTORS[n.sector]||'综合'} · ${n.publisher}`));item.append(el('div','item-detail','官网公开日期：'+n.public_date+(n.public_at?' '+new Date(n.public_at).toLocaleTimeString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false}):'')));if(n.issue_date)item.append(el('div','item-detail issue-date','文件成文日期：'+n.issue_date));appendReview(item,n);area.append(item);}
+    for(const n of section.items){assigned.add(n.id);const item=el('div','item');const selectRow=el('div','item-select'),checkbox=el('input');checkbox.type='checkbox';checkbox.setAttribute('aria-label','选择公告：'+n.title);checkbox.checked=selected.has(n.id);checkbox.addEventListener('change',()=>{if(checkbox.checked)selected.add(n.id);else selected.delete(n.id);renderSelection();});const titleLink=link(n.url,n.title,'item-name');titleLink.dataset.noticeId=n.id;selectRow.append(checkbox,titleLink);item.append(selectRow);item.append(el('div','item-detail',`${SECTORS[n.sector]||'综合'} · ${displayPublisher(n)}`));item.append(el('div','item-detail','官网公开日期：'+n.public_date+(n.public_at?' '+new Date(n.public_at).toLocaleTimeString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false}):'')));if(n.issue_date)item.append(el('div','item-detail issue-date','文件成文日期：'+n.issue_date));appendReview(item,n);area.append(item);}
     body.append(area);
    }
    if(!groupItems.length)body.append(el('div','none',(filter.q||filter.type!=='all')?'当前筛选没有匹配公告':'所选范围未发现更新'));
@@ -41,7 +41,7 @@ function appendReview(item,n){
 function separateRows(root,rows,label,description,unknown){
  root.replaceChildren();root.hidden=!rows.length;if(!rows.length)return;
  root.append(el('h2','section-title',label),el('p','status',description));
- const groups=new Map();for(const n of rows){const name=n.publisher||'发布机构未明确';if(!groups.has(name))groups.set(name,[]);groups.get(name).push(n);}
+ const groups=new Map();for(const n of rows){const name=n.level==='qixia'?qixiaCard(n):displayPublisher(n)||'发布机构待确认';if(!groups.has(name))groups.set(name,[]);groups.get(name).push(n);}
  const grid=el('div','sources');
  for(const [name,notices] of groups){
   const card=el('article','source'),head=el('div','source-top');head.append(el('span','source-title',name));card.append(head);
@@ -50,7 +50,7 @@ function separateRows(root,rows,label,description,unknown){
    const ns=notices.filter(n=>n.type===type);if(!ns.length)continue;
    const area=el('details',unknown?'undated-section':'open-archive-section');area.open=true;area.dataset.type=type;
    area.append(el('summary','',(type==='project'?'项目申报':'涉企政策')+'（'+ns.length+'条）'));
-   for(const n of ns){const item=el('div','item');const a=link(n.url,n.title,unknown?'undated-name':'open-archive-name');a.dataset.noticeId=n.id;item.append(a,el('div','item-detail','发布部门：'+n.publisher),el('div','item-detail',unknown?'官网公开日期待确认':'官网公开日期：'+n.public_date));if(n.issue_date)item.append(el('div','item-detail issue-date','文件成文日期：'+n.issue_date));appendReview(item,n);area.append(item);}
+   for(const n of ns){const item=el('div','item');const a=link(n.url,n.title,unknown?'undated-name':'open-archive-name');a.dataset.noticeId=n.id;item.append(a,el('div','item-detail','发布部门：'+displayPublisher(n)),el('div','item-detail',unknown?'官网公开日期待确认':'官网公开日期：'+n.public_date));if(n.issue_date)item.append(el('div','item-detail issue-date','文件成文日期：'+n.issue_date));appendReview(item,n);area.append(item);}
    body.append(area);
   }
   card.append(body);grid.append(card);
@@ -62,7 +62,7 @@ function renderSeparateArchives(result,filter){
  separateRows($('open-archive'),openArchive(dataset,filter),'历史发布、当前仍可申报','以下项目依据已核实企业申报期限展示，不属于所选日期范围的新增数量；上方已列项目不重复显示。',false);
 }
 
-function renderSelection(){const rows=currentItems.filter(n=>selected.has(n.id));$('selected-count').textContent=rows.length;$('selection-empty').hidden=rows.length>0;const body=$('selected-rows');body.replaceChildren();rows.forEach((n,i)=>{const tr=el('tr');tr.append(el('td','',i+1),el('td','',n.public_date));const title=el('td');title.append(link(n.url,n.title));tr.append(title,el('td','',n.publisher),el('td','',n.issue_date||''));body.append(tr);});$('export').disabled=!rows.length;}
+function renderSelection(){const rows=currentItems.filter(n=>selected.has(n.id));$('selected-count').textContent=rows.length;$('selection-empty').hidden=rows.length>0;const body=$('selected-rows');body.replaceChildren();rows.forEach((n,i)=>{const tr=el('tr');tr.append(el('td','',i+1),el('td','',n.public_date));const title=el('td');title.append(link(n.url,n.title));tr.append(title,el('td','',displayPublisher(n)),el('td','',n.issue_date||''));body.append(tr);});$('export').disabled=!rows.length;}
 $('select-all').addEventListener('click',()=>{currentItems.forEach(n=>selected.add(n.id));render();});$('clear').addEventListener('click',()=>{selected.clear();render();});$('export').addEventListener('click',()=>{const rows=currentItems.filter(n=>selected.has(n.id));if(!rows.length)return;const url=URL.createObjectURL(new Blob([exportCSV(rows)],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='政府公告_'+$('start').value+'_'+$('end').value+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 for(const b of document.querySelectorAll('[data-days]'))b.addEventListener('click',()=>range(+b.dataset.days));$('apply').addEventListener('click',()=>{document.querySelectorAll('[data-days]').forEach(b=>b.classList.remove('active'));render();});$('search').addEventListener('input',render);for(const id of ['level','sector','type'])$(id).addEventListener('change',render);range(1);
 async function load(){try{const r=await fetch('data/public.json',{cache:'no-store'});if(!r.ok)throw Error('数据不可用');const d=await r.json();if(![1,2,3].includes(d.schema_version)||!Array.isArray(d.sources)||!Array.isArray(d.announcements))throw Error('数据格式异常');dataset=d;lastError='';try{localStorage.setItem('public-policy-cache-v1',JSON.stringify(d));}catch{};try{const s=await fetch('data/status.json',{cache:'no-store'});if(s.ok){const status=await s.json();if(status.status==='error')lastError='最近一次更新未完成，保留上次成功数据。';}}catch{}render();}catch{try{dataset=JSON.parse(localStorage.getItem('public-policy-cache-v1'));}catch{}lastError='公开数据加载失败，当前为上次成功缓存；不能据此认定无更新。';if(dataset)render();else{$('notice').hidden=false;$('notice').textContent='公开数据暂不可用，统计未生成。请稍后重试。';$('status').textContent='未加载成功，不将未知状态显示为零。';}}}
