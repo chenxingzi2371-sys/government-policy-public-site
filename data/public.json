@@ -19707,46 +19707,7 @@
       ]
     }
   ],
-  "undated_announcements": [
-    {
-      "id": "bc005323ddbd01a23c375e91",
-      "title": "关于组织2026年南京市工业和信息化发展专项资金项目（第四批）申报的通知",
-      "url": "https://gxj.nanjing.gov.cn/njsjjhxxhwyh/202610/t20261027_6026605.html",
-      "publisher": "南京市工业和信息化局    南京市财政局",
-      "level": "nanjing",
-      "sector": "industry",
-      "type": "project",
-      "public_date": null,
-      "public_at": null,
-      "issue_date": null,
-      "deadlines": [
-        {
-          "date": "2026-11-11",
-          "time": null,
-          "phase": "online"
-        }
-      ],
-      "source_ids": [
-        "365bac12aafdce393845"
-      ]
-    },
-    {
-      "id": "4c5335bfc8c0ca4f0dbe2e63",
-      "title": "关于组织申报2026年南京市临床基础研究项目（医疗器械领域）的通知",
-      "url": "https://kjj.nanjing.gov.cn/njskxjswyh/202610/t20261016_6020210.html",
-      "publisher": "南京市科学技术局",
-      "level": "nanjing",
-      "sector": "science",
-      "type": "project",
-      "public_date": null,
-      "public_at": null,
-      "issue_date": null,
-      "deadlines": [],
-      "source_ids": [
-        "a27b1dcd7302fa82086c"
-      ]
-    }
-  ],
+  "undated_announcements": [],
   "collection_batch": {
     "id": "6beb60f6d14be726dc4e30da31a6d8f5acd9f5dca370222048a6d74567a6d6c0",
     "completed_at": "2026-11-23T18:37:22.466426+08:00"
